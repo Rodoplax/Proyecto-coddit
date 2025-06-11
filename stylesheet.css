@@ -1,13 +1,57 @@
+
+/* --------------Variables-------------- */
+:root {
+    --color-principal: #2F27CE;
+    --color-secundario: #DEDCFF;
+    --background: #021526;
+    --color-accent: #433BFF;
+    --color-comillas: #BB7300;
+    --texto:
+}
+@font-face {
+    font-family: "Anek Telugu", sans-serif;
+    src: url('assets/fonts/AnekTelugu-VariableFont_wdth\,wght.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Nunito", sans-serif;
+    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Nova Flat", system-ui;
+    src: url('assets/fonts/NovaFlat-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal; 
+}
+@font-face {
+    font-family: "Anonymous Pro", monospace;
+    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* -------------Variables-------------- */
+
 * {
     box-sizing:border-box;
     margin:0;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+img {
+    pointer-events: none;
+    user-drag: none;
+    -webkit-user-drag: none;
 }
 
 body {
+    background-color: var(--background);
     width:100vw;
     height:100vh;
-    background: linear-gradient(-40deg, hsl(30, 100%, 65%, 0.8), hsl(10, 100%, 65%, 0.8 ))
+    
 }
 
 ul{
