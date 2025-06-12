@@ -6,30 +6,30 @@
     --background: #021526;
     --color-accent: #433BFF;
     --color-comillas: #BB7300;
-    --texto:
+    --texto: #FFFFFF;
 }
 @font-face {
-    font-family: "Anek Telugu", sans-serif;
-    src: url('assets/fonts/AnekTelugu-VariableFont_wdth\,wght.ttf') format('ttf');
+    font-family: "Anek Telugu"; /*sans-serif */
+    src: url('assets/fonts/AnekTelugu-VariableFont_wdth\,wght.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Nunito", sans-serif;
-    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('ttf');
+    font-family: "Nunito"; /*sans-serif */
+    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: "Nova Flat", system-ui;
-    src: url('assets/fonts/NovaFlat-Regular.ttf') format('ttf');
+    font-family: "Nova Flat"; /* system-ui */
+    src: url('assets/fonts/NovaFlat-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal; 
 }
 @font-face {
-    font-family: "Anonymous Pro", monospace;
-    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('ttf');
+    font-family: "Anonymous Pro"; /* monospace */
+    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -40,7 +40,13 @@
     box-sizing:border-box;
     margin:0;
 }
-
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: var(--texto);
+}
 img {
     pointer-events: none;
     user-drag: none;
@@ -51,17 +57,11 @@ body {
     background-color: var(--background);
     width:100vw;
     height:100vh;
-    
 }
-
-ul{
-    list-style-type: none;
-    padding:0;
-}
-
-a {
-    text-decoration: none;
-    color: black;
+.homepage{
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    font-family: "Nova Flat", sans-serif;
+    color: var(--texto);
 }
 
 header {
@@ -72,50 +72,87 @@ header {
     padding: 15px;
     justify-content: space-around;
     align-items: center;
-    background: #f5f5f5dd;
+    background: var(--background);
 }
 
 .nav__ul{
     display: flex;
+    gap: min(30px, 3vw);
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--texto);
+    font-size: clamp(1rem, 2.25vw, 1.5rem);
+    font-family: "Anek Telugu", sans-serif;
 }
-
-.nav__ul a{
-    margin-left: 30px;
+.nav__li{
+    padding: 5px 10px 0 10px; /* Solucinar de forma permanente */
+    position: relative;
 }
-
-.logo {
-    font-size: 2em;
-    font-weight: bold;
-    transition: background-image, .2s;
+.nav__li a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
-
-.logo:hover {
-    background-image:linear-gradient(-40deg, hsl(10, 100%, 65%, 0.9),  hsl(30, 100%, 65%, 0.9));
-    background-clip:text;
-    color:transparent;
+.nav__li--btn {
+    background: linear-gradient(to right, var(--color-accent), var(--color-principal));
+    color: var(--texto);
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px var(--color-accent);
+    transition: transform .3s ease;
 }
-
-.nav__ul a{
-    font-size: 17px;
-    position:relative;
-    margin-left: 30px;
-    transition: color, .1s, width, .3s;
-}
-
-.nav__ul a::before{
+.nav__li::before {
     content: '';
-    top: 100%;
-    position:absolute;
-    background:hsl(30,100%,45%);
-    width:0px;
-    height:3px;
-    transition: width, .3s;
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    background-color: var(--color-accent);
+    bottom: 0;
+    left: 20%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+.nav__li:hover::before {
+    width: 100%;
+    left: 0;
+}
+.nav__li--btn::before {
+    content: none;
+    ;
 }
 
-.nav__ul a:hover{
-    color:hsl(30,100%,35%);
+.nav__li--btn:hover {
+    transform: scale(1.05);
 }
 
-.nav__ul a:hover::before{
-    width:100%;
+@media (width < 768px) {
+    header {
+        width: 65%;
+        margin-left: 50%;
+        margin-top: 40px;
+        transform: translateX(-50%);
+        border-radius: 60px;
+        box-shadow: 0px 0px 6px var(--texto);
+    }
+    .homepage {
+        font-size: clamp(1.5rem, 6vw, 3rem);
+    }	
+    nav {
+        display: none;
+    }
+    .nav__hamburger{
+        display: flex;
+        height:30px;
+        justify-content: space-between;
+        flex-direction: column;
+        
+    }
+    .nav__hamburger-bar{
+        width: clamp(30px, 8vw, 60px);
+        height: clamp(3px, 1vh, 6px);
+        border-radius: 50px;
+        background-color: var(--texto);
+        color: var(--texto);
+    }
+    
 }
