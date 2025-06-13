@@ -1,9 +1,6 @@
-// Mensaje al cambiar de pestaña/página XD
-
-let docTitle = document.title;
-window.addEventListener("blur", () => {
-    document.title = "¿Dónde vas? 😥";
-})
-window.addEventListener("focus", () => {
-    document.title = docTitle;
-})
+let menu = document.querySelector(".nav__hamburger");
+let nav = document.getElementById("nav");
+menu.addEventListener("click", ()=>{
+    nav.classList.toggle("nav__open");
+    menu.classList.toggle("open");
+});
