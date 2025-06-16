@@ -7,7 +7,10 @@
     --color-accent: #433BFF;
     --color-comillas: #BB7300;
     --texto: #FFFFFF;
+    --circle-size: 200vmax;
+    scroll-behavior: smooth;
 }
+
 @font-face {
     font-family: "Anek Telugu"; /*sans-serif */
     src: url('assets/fonts/AnekTelugu-VariableFont_wdth\,wght.ttf') format('truetype');
@@ -29,7 +32,7 @@
 }
 @font-face {
     font-family: "Anonymous Pro"; /* monospace */
-    src: url('assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+    src: url('assets/fonts/AnonymousPro-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -143,30 +146,26 @@ header {
 
 @media (width < 768px) {
     header {
-        width:45%;
+        width:65%;
         margin-left: 50%;
         margin-top: 40px;
         transform: translateX(-50%);
         border-radius: 60px;
         box-shadow: 0px 0px 6px #dedcff83;
-        backdrop-filter: blur(20px);
-
+        backdrop-filter: blur(200px);
     }
     .homepage {
         font-size: clamp(1.5rem, 5vw, 3rem);
     }
-    
     nav {
         display: none;
         position: fixed;
-        top: -100%;
+        top: 0;
         width: 100vw;
-        height: 150vh;
-        background-color: var(--color-accent);
-        border: 1px solid var(--texto);
+        height: 100vh;
+        background-color: #021322;
         z-index: 100000000;
-        backdrop-filter: blur(10px); /* Aplica el blur */
-        -webkit-backdrop-filter: blur(10px); /* Para Safari */
+        transform: translateY(-40px);
     }
     
     nav.nav__open{
@@ -184,39 +183,47 @@ header {
         width: 60%;
     }
     .nav__hamburger{ /* Arreglar la x */
-        display: flex;
         height:28px;
-        justify-content: center;
-        gap: 5px;
-        align-items: center;
-        flex-direction: column;
+        width: clamp(30px, 8vw, 60px);
         z-index: 1000000000;
+        position: relative;
     }
     .nav__hamburger-bar{
+        display: block;
         width: clamp(30px, 8vw, 60px);
-        height: clamp(2px, .6vh, 5px);
+        height: max(3px, .8vw);
         border-radius: 50px;
         background-color: var(--texto);
         color: var(--texto);
+        transform-origin: center;
+        transition: transform 0.3s ease, opacity 0.3s ease, top 0.4s ease;
+        position: absolute;
     }
-    .nav__hamburger-bar {
-        transition: all 0.3s ease;
+    .nav__hamburger-bar:nth-child(1) {
+        transform: rotate(0deg);
+        top:0;
+    }
+    .nav__hamburger-bar:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .nav__hamburger-bar:nth-child(3) {
+        top: 100%;
+        transform: translateY(-100%)
     }
     .nav__hamburger.open{
-        width: 28px;
-        height: 28px;
-    }
-    .nav__hamburger-bar {
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        position: absolute;
     }
     .nav__hamburger.open .nav__hamburger-bar:nth-child(1) {
-        transform: rotate(45deg) translate(0.35em, 0.35em);
+        transform: rotate(45deg);
+        top: 50%;
     }
     .nav__hamburger.open .nav__hamburger-bar:nth-child(2) {
         opacity: 0;
     }
     .nav__hamburger.open .nav__hamburger-bar:nth-child(3) {
-        transform: rotate(-45deg) translate(0.35em, -0.35em);
+        transform: rotate(-45deg);
+        top: 50%;
     }
 }
 
@@ -410,17 +417,47 @@ header {
 @media(width < 768px) {
 
     .inicio{
-        margin-bottom: 125px;
+        margin-bottom: 130px;
     }
-    .inicio__linea1, .inicio__linea2, .inicio__linea3{
-        border: none;
-    }
-    .inicio__texto{
+    .inicio__linea1, .inicio__linea2, .inicio__linea3, .inicio__texto, .inicio__titulo, .inicio__cubos{
         border: none;
     }
     .inicio__titulo{
         display: none;
     }
+    .inicio__grid{
+        grid-template-columns: 100vw;
+    }
+    .inicio__cubos{
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+    .cubo1{
+        display: none;
+    }
+    .cubo2{
+        top: -50px;
+    }
+    .inicio__texto{
+        grid-row: 4 / 5;
+        grid-column: 1 / 2;
+        padding: 20px;
+        position: relative;
+        top: -50px;
+        outline: 2px solid var(--color-secundario);
+        padding-left: 80px;
+    }
+    .semicirculo{
+        width: 250px;
+        height: 500px;
+        background-color: var(--color-principal);
+        border-radius: 500px;
+        position: absolute;
+        top: 3%;
+        right: 93%;
+        z-index: -1;
+    }
+    /* 
     .inicio__grid{
         display: flex;
         flex-direction: column;
@@ -430,10 +467,13 @@ header {
     }
     .inicio__texto{
         display: flex;
+        position: relative;
         flex-direction: column;
         width: 80%;
-        margin: 0% 0;
+        top: clamp(-250px, -50vh, -300px);
         align-items: start;
+        border: 1px solid red;
+        padding: 50px;
     }
     
     .inicio__p{
@@ -445,33 +485,34 @@ header {
     }
     .cubo1{
         position: relative;
-        top: -10vh;
-        right: 30vw;
+        top: -200px;
+        right: 30px;
     }
     .cubo3{
         position: relative;
-        top: -60vh;
+        top: -50vh;
         left: 35vw;
     }
     .cubo2{
         display: none;
-    }
-    .semicirculo{
-        width: 250px;
-        height: 500px;
-        background-color: var(--color-principal);
-        border-radius: 200px;
-        position: absolute;
-        top: 5%;
-        right: 93%;
-        z-index: -1;
-    }
+    } */
+    
+    /*
     .flecha{
         width: 25px;
         height: 25px;
         position: absolute;
         bottom: 5%;
     }
+    .cubos div:nth-of-type(6) {
+    transform: translateZ(35px);
+    }
+    .cubos.cubo1 div:nth-of-type(1) {
+        transform: translateZ(-50px) rotateY(180deg);
+    }
+    .cubos.cubo1 div:nth-of-type(6) {
+        transform: translateZ(50px);
+    } */
 }
 
 
@@ -548,12 +589,78 @@ header {
     height: 100px;
     color: var(--color-comillas);
 }
+
+
+/* -------------/Inicio-------------- */
+
+/*--------------No es solo una web---------------*/
+
+.no-web{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.forma1{
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    left: 15px;
+    transform: translate(-50%, -20%);
+}
+.textos-section3{
+    display: flex; 
+    flex-direction: column; 
+    color: var(--texto);
+    width: 40vw;
+    margin: auto;
+    gap: 30px;
+}
+
+.titulo-no-web{
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+}
+
+.una-web{
+    font-weight: 100;
+    font-style: italic;
+}
+
+.texto-no-web{
+    font-size: clamp(1.5rem, 2vw, 2.25rem);
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
     Lista de tareas:
-
-    1. Perfilar el nav. Tanto en responsive tanto como en normal.
-    2. Mejorar el cubo con la perspectiva adecuada y perfeccionar el cubo.
-    3. Arreglar el putisimo boton de "Quiero saber más" que no se ve en responsive.
+    0. Añadir animación a las sección de somos coddit. Al hacer hover que haga un efecto 3d segun la posición del ratón o ponerle otra animación.
+    1. Quitar la barra del overflow en y del nav en el responsive.
+    2. Arreglar el putisimo boton de "Quiero saber más" que no se ve en responsive.
+    3. Hacer la página accesible, añadir etiquetas aria y roles.
 
 */
-/* -------------Inicio-------------- */
