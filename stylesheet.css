@@ -230,10 +230,9 @@ header {
 /* -------------Nav-------------- */
 /* -------------Inicio-------------- */
 .inicio{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     padding-top: 100px;
-    overflow: hidden;
     margin-bottom: 200px;
 }
 .inicio__grid{
@@ -277,7 +276,7 @@ header {
 }
 .inicio__btn{
     background-color: #03223D;
-    width: max(65%, 200px);
+    width: max(65%, 300px);
     height: calc(1.5rem + 1vw);
     color: var(--texto);
     border-radius: 20px;
@@ -342,7 +341,9 @@ header {
     animation: animacion__cubo 4s infinite ease 1s;
     z-index: -1;
     position: relative;
+    transition: top .5s ease;
 }
+
 
 .cubo1{
     width: 100px;
@@ -359,12 +360,19 @@ header {
     bottom: 40px;
 }
 
+.cubo4{
+    display: none;
+    width: 120px;
+    height: 120px;
+}
+
 .cubos > div {
     height: 100%;
     position: absolute;
     width: 100%;
     border: 2px solid var(--color-principal);
 }
+
 
 .cubos div:nth-of-type(1) {
     transform: translateZ(-35px) rotateY(180deg);
@@ -393,13 +401,37 @@ header {
 .cubos div:nth-of-type(6) {
     transform: translateZ(35px);
 }
-.cubos.cubo1 div:nth-of-type(1) {
+.cubos.cubo1 div:nth-of-type(1){
     transform: translateZ(-50px) rotateY(180deg);
 }
-.cubos.cubo1 div:nth-of-type(6) {
+.cubos.cubo1 div:nth-of-type(6){
     transform: translateZ(50px);
 }
 
+.semicirculo{
+    display:none;
+    width: 250px;
+    height: 500px;
+    background-color: var(--color-principal);
+    border-radius: 500px;
+    position: absolute;
+    top: 3%;
+    right: 95%;
+    z-index: -1;
+    }
+
+.semicirculo--der{
+    display:none;
+    width: 250px;
+    height: 500px;
+    background-color: var(--color-principal);
+    border-radius: 500px;
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    z-index: -1;
+    }
+    
 @keyframes animacion__cubo {
     0% {
         transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
@@ -428,6 +460,16 @@ header {
     .inicio__grid{
         grid-template-columns: 100vw;
     }
+    .inicio__titulo{
+    font-size: clamp(2.5rem, 7.5vw, 72px);
+    
+    }
+    .inicio__span{
+        font-size: clamp(1.75rem, 5.25vw, 2.25rem);
+    }
+    .inicio__btn{
+        font-size: clamp(1.25rem, 2.25vw, 2rem);
+    }
     .inicio__cubos{
         grid-row: 2 / 3;
         grid-column: 1 / 2;
@@ -436,83 +478,59 @@ header {
         display: none;
     }
     .cubo2{
-        top: -50px;
+        top: -35px;
+        right: 30px;;
+    }
+    .cubo3{
+        top: 50px;
     }
     .inicio__texto{
-        grid-row: 4 / 5;
+        grid-row: 4 / 6;
         grid-column: 1 / 2;
         padding: 20px;
         position: relative;
         top: -50px;
-        outline: 2px solid var(--color-secundario);
-        padding-left: 80px;
+        padding-left: 90px;
     }
-    .semicirculo{
-        width: 250px;
-        height: 500px;
-        background-color: var(--color-principal);
-        border-radius: 500px;
-        position: absolute;
-        top: 3%;
-        right: 93%;
-        z-index: -1;
+    .semicirculo, .semicirculo--der{
+        display: block;
     }
-    /* 
-    .inicio__grid{
-        display: flex;
-        flex-direction: column;
-        width: 100vw;
-        height: 100vh;
-        align-items: center;
-    }
-    .inicio__texto{
-        display: flex;
+
+    .cubo4{
+        grid-row: 6 / 8;
+        grid-column: 1 / 2;
+        display: block;
+        margin: auto;
         position: relative;
-        flex-direction: column;
-        width: 80%;
-        top: clamp(-250px, -50vh, -300px);
-        align-items: start;
-        border: 1px solid red;
-        padding: 50px;
+        top: -20px;
+        right: 100px;
     }
-    
-    .inicio__p{
-        font-size: clamp(1.5rem, 5.5vw, 2.25rem);
+    .cubos.cubo4 div:nth-of-type(1){
+    transform: translateZ(-60px) rotateY(180deg);
     }
-    .inicio__cubos{
-        display: flex;
-        border: none;
+    .cubos.cubo4 div:nth-of-type(6){
+        transform: translateZ(60px);
     }
-    .cubo1{
-        position: relative;
-        top: -200px;
-        right: 30px;
-    }
-    .cubo3{
-        position: relative;
-        top: -50vh;
-        left: 35vw;
-    }
-    .cubo2{
-        display: none;
-    } */
-    
-    /*
-    .flecha{
+    .flecha {
+        display: block;
+        grid-row: 8 / 8;
+        grid-column: 1 / 2;
+        margin: auto;
         width: 25px;
-        height: 25px;
-        position: absolute;
-        bottom: 5%;
+        cursor: pointer;
+        transition: top .3s ease, transform .3s ease-out;
+        position: relative;
+        top: 0;
     }
-    .cubos div:nth-of-type(6) {
-    transform: translateZ(35px);
+    
+    .flecha:hover{
+        transform: scale(1.1);
+        top: 10px;
     }
-    .cubos.cubo1 div:nth-of-type(1) {
-        transform: translateZ(-50px) rotateY(180deg);
+    .flecha:active{
+        transform: scale(1.1);
+        top: 50px;
     }
-    .cubos.cubo1 div:nth-of-type(6) {
-        transform: translateZ(50px);
-    } */
 }
 
 
@@ -597,57 +615,71 @@ header {
 
 .no-web{
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     background-color: var(--background);
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .forma1{
     width: 300px;
     height: 600px;
     position: absolute;
-    left: 15px;
-    transform: translate(-50%, -20%);
+    left: 10px;
+    transform: translate(-45%, -20%);
+}
+.forma2{
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    right: 10px;
+    transform: translate(45%, 20%);
+    bottom: 0px;
 }
 .textos-section3{
     display: flex; 
     flex-direction: column; 
     color: var(--texto);
-    width: 40vw;
-    margin: auto;
+    width: 50vw;
+    margin-top: 50px;
     gap: 30px;
 }
-
 .titulo-no-web{
-    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
     font-family: "Nunito", sans-serif;
     font-weight: bold;
+    padding-bottom: 50px;
 }
-
 .una-web{
     font-weight: 100;
     font-style: italic;
 }
-
 .texto-no-web{
-    font-size: clamp(1.5rem, 2vw, 2.25rem);
+    font-size: clamp(1.25rem, 1.75vw, 2rem);
     font-family: "Anonymous Pro", monospace;
     font-weight: 400;
+    text-wrap: pretty;
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
+.btn-no-web{
+    width: 50%;
+    height: clamp(1.75rem, 2vw, 2rem);
+    color: var(--texto);
+    background-color: var(--background);
+    border: 1px solid var(--color-principal);
+    border-radius: 30px;
+    font-family: "Anonymous Pro", monospace;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    cursor: pointer;
+}
+.btn-no-web:hover{
+    background-color: var(--color-principal);
+    color: var(--texto);
+    transition: background-color .4s ease-in-out;
+}
 
 
 
