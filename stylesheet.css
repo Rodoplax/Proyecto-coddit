@@ -75,6 +75,9 @@ body {
     height:100vh;
     overflow-x: hidden;
 }
+main{
+    overflow: hidden;
+}
 
 .homepage{
     font-size: clamp(2rem, 5vw, 3.75rem);
@@ -227,8 +230,9 @@ header {
     }
 }
 
-/* -------------Nav-------------- */
+/* -------------/Nav-------------- */
 /* -------------Inicio-------------- */
+
 .inicio{
     width: 100vw;
     height: 100vh;
@@ -241,7 +245,6 @@ header {
     grid-template-rows: repeat(7, 1fr);
     width: 100%;
     height: 100%;
-    
 }
 .inicio__texto{
     grid-column: 1 / 2;
@@ -258,13 +261,13 @@ header {
     border-right: none;
 }
 .inicio__titulo{
-    font-size: clamp(2.5rem, 7.5vw, 72px);
+    font-size: clamp(1.5rem, 10vw, 72px);
     font-family: "Nova Flat", sans-serif;
     color: var(--texto);
     letter-spacing: 0.06em;
 }
 .inicio__p{
-    font-size: clamp(1.5rem, 2vw, 2.25rem);
+    font-size: clamp(1rem, 3vw, 2.25rem);
     font-family: "Anonymous Pro", monospace;
     color: var(--color-accent);
     margin-top: 20px;
@@ -277,7 +280,7 @@ header {
 .inicio__btn{
     background-color: #03223D;
     width: max(65%, 300px);
-    height: calc(1.5rem + 1vw);
+    height: calc(1.5em + 1vw);
     color: var(--texto);
     border-radius: 20px;
     border: 1px solid #2F27CE;
@@ -317,6 +320,8 @@ header {
     border: 4.5px solid var(--color-secundario);
     border-bottom: none;
     border-top: none;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 .inicio__linea3{
     grid-column: 3 / 4;
@@ -415,7 +420,7 @@ header {
     background-color: var(--color-principal);
     border-radius: 500px;
     position: absolute;
-    top: 3%;
+    top: -10%;
     right: 95%;
     z-index: -1;
     }
@@ -428,9 +433,9 @@ header {
     border-radius: 500px;
     position: absolute;
     top: 50%;
-    left: 95%;
+    left: 94%;
     z-index: -1;
-    }
+}
     
 @keyframes animacion__cubo {
     0% {
@@ -458,7 +463,9 @@ header {
         display: none;
     }
     .inicio__grid{
+        position: relative;
         grid-template-columns: 100vw;
+        
     }
     .inicio__titulo{
     font-size: clamp(2.5rem, 7.5vw, 72px);
@@ -469,6 +476,7 @@ header {
     }
     .inicio__btn{
         font-size: clamp(1.25rem, 2.25vw, 2rem);
+        height: clamp(1.75rem, 20vw, 2rem);
     }
     .inicio__cubos{
         grid-row: 2 / 3;
@@ -478,11 +486,12 @@ header {
         display: none;
     }
     .cubo2{
-        top: -35px;
-        right: 30px;;
+        top: -5%;
+        right: 30px;
     }
     .cubo3{
-        top: 50px;
+        top: 35px;
+        left: 8vw;
     }
     .inicio__texto{
         grid-row: 4 / 6;
@@ -490,7 +499,12 @@ header {
         padding: 20px;
         position: relative;
         top: -50px;
-        padding-left: 90px;
+        width: fit-content;
+        margin: auto;
+    }
+    .inicio__p{
+    font-size: clamp(1rem, 10vh, 2.25rem);
+    max-width: 70vw;
     }
     .semicirculo, .semicirculo--der{
         display: block;
@@ -533,15 +547,18 @@ header {
     }
 }
 
+/* ----------------------/Inicio--------------------- */
+
+/*----------------------Nosotros---------------------*/
 
 .nosotros{
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     background-image: radial-gradient(white 1px, transparent 2px);
     background-size: 20px 20px;
     display: flex;
     justify-content: center;
-    margin: auto;
+    margin-top: 100px;
 }
 .nosotros::before{
     content: '';
@@ -553,7 +570,6 @@ header {
 }
 
 .nosotros__card{
-
     background-color: #042849;
     border-radius: 20px;
     margin: auto;
@@ -579,7 +595,7 @@ header {
 }
 
 .nosotros__card p {
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.75vw, 2.25rem);
     line-height: 1.4;
     
 }
@@ -607,21 +623,61 @@ header {
     height: 100px;
     color: var(--color-comillas);
 }
+.semicirculo--nosotros{
+    display:none;
+    width: 250px;
+    height: 500px;
+    background-color: var(--color-principal);
+    border-radius: 500px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 85%;
+    z-index: -1;
+    }
+
+@media(width < 768px){
+    .nosotros{
+        background-image: none;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .nosotros__card{
+        max-width: 90%;
+        height: 50vh;
+        background: #03182B65; 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 5px 3px 10px #010e1aa5;
+    }
+    .semicirculo--nosotros{
+        display: block;
+    }
+    .nosotros__card h2 {
+        font-size: clamp(1.75rem, 2.25vw, 2.25rem);
+    }
+    .nosotros__card p {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+    }
+}
 
 
-/* -------------/Inicio-------------- */
+
+/* -------------/Nosotros-------------- */
 
 /*--------------No es solo una web---------------*/
 
 .no-web{
     width: 100vw;
-    height: 120vh;
+    height: 90vh;
     background-color: var(--background);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .forma1{
@@ -644,7 +700,7 @@ header {
     flex-direction: column; 
     color: var(--texto);
     width: 50vw;
-    margin-top: 50px;
+    margin-top: 40px;
     gap: 30px;
 }
 .titulo-no-web{
@@ -662,7 +718,6 @@ header {
     font-family: "Anonymous Pro", monospace;
     font-weight: 400;
     text-wrap: pretty;
-
 }
 .btn-no-web{
     width: 50%;
@@ -680,19 +735,136 @@ header {
     color: var(--texto);
     transition: background-color .4s ease-in-out;
 }
+.mundo-nuevo{
+    display: none;
+    position: absolute;
+    fill: #a09f9f10;
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -140px;
+}
+
+@media(width < 768px){
+    .forma1, .forma2{
+        display: none;
+    }
+    .no-web{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+    .mundo-nuevo{
+        display: block;
+    }
+    .titulo-no-web{
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    padding-bottom: 50px;
+    }
+    .texto-no-web{
+    font-size: clamp(1.5rem, 1.5vw, 2.25rem);
+    }
+    .textos-section3{
+    display: flex; 
+    flex-direction: column;
+    color: var(--texto);
+    width: 80vw;
+    gap: 30px;
+    }   
+    .btn-no-web{
+        width: 60%;
+        height: clamp(2.5rem, 2.25vw, 2rem);
+        font-size: clamp(1.25rem, 2vw, 1.75rem);
+    }
+    .una-web{
+        border-bottom: 3px solid var(--color-accent);
+        border-radius: 3px;
+    }
+
+}
 
 
+/*--------------exito---------------*/
 
+.exito{
+    margin-top: 200px;
+    width: 100vw;
+    max-height: 80vh;
+    padding: 50px 0 90px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.exito__img{
+    width: 70vw;
+    max-width: 1000px;
+}
 
+.exito__p{
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-family: "Nunito", sans-serif;
+    color: var(--color-secundario);
+    width: 80vw;
+    text-align: center;
+    text-wrap: balance;
+    line-height: 2.25;
+    max-width: 1200px;
+    letter-spacing: 0.02em;
+}
+.exito__impulsar{
+    font-family: 'Bungee';
+    padding: 10px 25px;
+    background-color: var(--color-accent);
+    border-radius: 500px;
+}
+.tachado{
+    text-decoration: line-through var(--color-secundario);
+}
+.exito__coddit{
+    border-bottom: 3px solid var(--color-accent);
+    border-radius: 3px;
+}
 
+@media ( width < 768px){
+    .exito{
+        height: 60vh;
+        background-image: radial-gradient(#ffffff2a 1px, transparent 2px);
+        background-size: 40px 40px;
+        margin: 0;
+    }
+    .exito__img{
+        display:none;
+    }
+    .exito__p{
+        width: 100vw;
+        font-size: clamp(1rem, 1vw, 1.75rem);
+    }
+}
 
+/*--------------proceso---------------*/
 
+.proceso{
+    width: 100vw;
+    height: 100vh;
+}
 /* 
     Lista de tareas:
     0. Añadir animación a las sección de somos coddit. Al hacer hover que haga un efecto 3d segun la posición del ratón o ponerle otra animación.
     1. Quitar la barra del overflow en y del nav en el responsive.
-    2. Arreglar el putisimo boton de "Quiero saber más" que no se ve en responsive.
+    2. Arreglar que cuando se da click en el nav de móvil te lleva a la sección de inicio
     3. Hacer la página accesible, añadir etiquetas aria y roles.
+    4. Poner los enlaces de cada botón, flecha y cosas.
+    5. Arreglar bugs con el responsive --> El semicirculo atraviesa otra sección en algunos diseños, el inicio hay que quitar los border y arreglar los cuadrados.
+
+
+    Tareas finales
+    0. Poner los textos definitivos.
+    1. Arreglar bugs finales.
 
 */
