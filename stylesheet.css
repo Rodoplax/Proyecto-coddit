@@ -96,7 +96,7 @@ header {
     background: var(--background);
     box-shadow: 0px -20px 33px var(--color-accent);
     z-index: 10000000;
-    /*border-bottom: 1px solid var(--color-accent);*/
+    transition: top 0.5s ease-in-out;
 }
 
 .nav__ul{
@@ -791,7 +791,7 @@ header {
 /*--------------exito---------------*/
 
 .exito{
-    margin-top: 200px;
+    margin: 250px 0;
     width: 100vw;
     max-height: 80vh;
     padding: 50px 0 90px 0;
@@ -852,7 +852,136 @@ header {
 .proceso{
     width: 100vw;
     height: 100vh;
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    position: relative;
 }
+
+.proceso__titulo{
+    position: relative;
+    margin-top: 30px;
+    margin: auto;
+    width: fit-content;
+    font-family: "Anek Telugu", sans-serif;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    margin-bottom: 100px;
+    border-bottom: 4px solid var(--color-principal);
+    border-radius: 2px;
+}
+
+.proceso__circulos{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.proceso__circulo{
+    border: none;
+    width: 65px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    padding: 10px;
+    background-color: var(--color-secundario);
+    border-radius: 50%;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-principal);
+    font-size: clamp(1.5rem, 4vw, 2rem);;
+    font-weight: bold;
+    font-family: "Nunito", sans-serif;
+    transition: background .3s ease, color .3s ease, box-shadow .3s ease, scale .3s ease;
+}
+
+.proceso__barras{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    gap: 20px;
+}
+
+.proceso__circulo:active, .proceso__circulo-active, .proceso__circulo:hover {
+    background-color: var(--color-principal);
+    color: var(--texto);
+    box-shadow: 0 0 10px var(--color-principal);
+}
+
+.proceso__circulo:hover{
+    scale: 1.2;
+}
+
+.proceso__carousel-item {
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 3rem;
+    color: var(--color-secundario);
+}
+
+.proceso__mini-titulo{
+    color: var(--texto);
+    font-family: "Anonymous Pro", monospace;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.proceso__icons{
+    width: 45px;
+    height: 45px;
+    margin: 20px;
+}
+
+.proceso__p{
+    font-size: clamp(1.5rem, 1.75vw, 2.25rem);
+    padding: 10px 15vw;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+.btn-progreso{
+    width: clamp(6vw, 8vw, 10vw);
+    aspect-ratio: 10/1;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    padding:0;
+    background-color: var(--color-secundario);
+}
+
+.proceso__carousel-container {
+    overflow: hidden;
+    width: 100vw;
+    margin: 50px 0;
+}
+.btn-progreso .fill {
+    background-color: var(--color-principal);
+    width: 0%; 
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.7s ease;
+    position: relative;
+    left: -1px;
+}
+
+.proceso__carousel {
+    transition: transform 0.5s ease-in-out;
+    width: 400vw;
+    display: flex;
+}
+
+.controles{
+    cursor: pointer;
+}
+
+
+
+
 /* 
     Lista de tareas:
     0. Añadir animación a las sección de somos coddit. Al hacer hover que haga un efecto 3d segun la posición del ratón o ponerle otra animación.

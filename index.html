@@ -26,7 +26,7 @@
         <script type="text/javascript" src="scripts.js" charset="utf-8" defer></script>
     </head>
     <body>
-        <header>
+        <header id="header">
             <a href="#" aria-label="Homepage" class="homepage">coddit</a>
             <a href="#" class="nav__hamburger" aria-label="Menu">
                 <span class="nav__hamburger-bar"></span>
@@ -98,13 +98,36 @@
 </svg>
 
             </section>
+
             <section class="exito">
                 <img class="exito__img" src="assets/images/cohete-luna.png" alt="Cohete hacia la Luna">
-                <p class="exito__p"><span class="exito__coddit">Coddit funciona</span> no pretende <span class="tachado">venderte una web</span>, pretende <br><span class="exito__impulsar">IMPULSAR tu negocio al éxito</span></p>
+                <p class="exito__p"><span class="exito__coddit">Coddit</span> no pretende <span class="tachado">venderte una web</span>, pretende <br><span class="exito__impulsar">IMPULSAR tu negocio al éxito</span></p>
             </section>
+
             <section class="proceso">
-                <
+                <h2 class="proceso__titulo">EL PROCESO</h2>
+                <div class="proceso__circulos controles">
+                    <button class="proceso__circulo" data-index="0">1</button>
+                    <button class="proceso__circulo" data-index="1">2</button>
+                    <button class="proceso__circulo" data-index="2">3</button>
+                    <button class="proceso__circulo" data-index="3">4</button>
+                </div>
+                <div class="proceso__carousel-container">
+                    <div class="proceso__carousel" id="carousel">
+                        <div class="proceso__carousel-item"><h3 class="proceso__mini-titulo">Inicio</h3><img class="proceso__icons" src="assets/images/house.svg"><p class="proceso__p">Contactas con nosotros, escuchamos tu idea, aportamos ideas, determinamos algunos aspectos y cuando te sientas seguro, empezamos.</p></div>
+                        <div class="proceso__carousel-item"><h3 class="proceso__mini-titulo">Estudiamos</h3><img class="proceso__icons" src="assets/images/lupa1.svg"><p class="proceso__p">Estudiamos tu marca, tus posibles clientes y a tu competencia directa para ofrecerte un servicio totalmente diferente, innovador y a tu medida.</p></div>
+                        <div class="proceso__carousel-item"><h3 class="proceso__mini-titulo">Diseñamos</h3><img class="proceso__icons" src="assets/images/pen.svg"><p class="proceso__p">Diseñamos tu proyecto, te entregamos el boceto terminado en Figma y te lo presentamos, hablamos y damos las últimas pinceladas a tu gusto.</p></div>
+                        <div class="proceso__carousel-item"><h3 class="proceso__mini-titulo">Fin</h3><img class="proceso__icons" src="assets/images/target.svg"><p class="proceso__p">Una vez hayas aprobado el diseño, empezaremos a programarlo. Una vez hayamos terminado te entregaremos la web y tu negocio habrá dado un paso gigante al mundo digital.</p></div>
+                    </div>
+                </div>
+                <div class="proceso__barras controles">
+                    <button class="btn-progreso" data-index="0"><div class="fill"></div></button>
+                    <button class="btn-progreso" data-index="1"><div class="fill"></div></button>
+                    <button class="btn-progreso" data-index="2"><div class="fill"></div></button>
+                    <button class="btn-progreso" data-index="3"><div class="fill"></div></button>
+                </div>
             </section>
+
         </main>
         <footer>
             
