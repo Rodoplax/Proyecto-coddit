@@ -72,7 +72,6 @@ img {
 body {
     background-color: var(--background);
     width:100vw;
-    height:100vh;
     overflow-x: hidden;
 }
 main{
@@ -807,7 +806,7 @@ header {
 }
 
 .exito__p{
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(2.25rem, 5vw, 2rem);
     font-family: "Nunito", sans-serif;
     color: var(--color-secundario);
     width: 80vw;
@@ -816,19 +815,23 @@ header {
     line-height: 2.25;
     max-width: 1200px;
     letter-spacing: 0.02em;
+    outline: 1px solid red;
 }
 .exito__impulsar{
     font-family: 'Bungee';
     padding: 10px 25px;
     background-color: var(--color-accent);
     border-radius: 500px;
+    font-size:clamp(1.25rem, 4vw, 1.75rem);
 }
 .tachado{
     text-decoration: line-through var(--color-secundario);
+    font-size:clamp(1.25rem, 4vw, 1.75rem);
 }
 .exito__coddit{
     border-bottom: 3px solid var(--color-accent);
     border-radius: 3px;
+    font-size:clamp(1.25rem, 4vw, 1.75rem);
 }
 
 @media ( width < 768px){
@@ -843,7 +846,10 @@ header {
     }
     .exito__p{
         width: 100vw;
-        font-size: clamp(1rem, 1vw, 1.75rem);
+        font-size:clamp(1.25rem, 4vw, 1.5rem);
+    }
+    .exito__impulsar{
+    padding: 10px 13px;
     }
 }
 

@@ -1,30 +1,29 @@
 
 // Menú hamburguesa en movil //
 
+
 let menu = document.querySelector(".nav__hamburger");
 let nav = document.getElementById("nav");
+
 menu.addEventListener("click", ()=>{
     nav.classList.toggle("nav__open");
     menu.classList.toggle("open");
 });
 
-
 //    Nav que aparece y desaprece al hacer scroll //
 
-    let prevScroll = window.scrollY;
-    const navbar = document.getElementById("header");
+let prevScroll = window.scrollY;
+const navbar = document.getElementById("header");
 
-    window.addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
-
     if (currentScroll > prevScroll) {
         navbar.style.top = "-120px"; 
     } else {
-    
-    navbar.style.top = "0";
+        navbar.style.top = "0";
     }
     prevScroll = currentScroll;
-    });
+});
 
 
 /* Carrusel de el proceso */
