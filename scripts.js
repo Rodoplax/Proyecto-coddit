@@ -28,7 +28,14 @@ window.addEventListener("scroll", () => {
 
 /* Carrusel de el proceso */
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
+  const mediaQuery = window.matchMedia("(max-width: 768px)");
+  let initialized = false;
+  let cleanup = () => {}; // Función para eliminar listeners si se desactiva
+
+  function initCarousel() {
     const carousel = document.getElementById('carousel');
     const buttons = document.querySelectorAll('.controles button');
     const progressFills = document.querySelectorAll('.btn-progreso .fill');
@@ -36,83 +43,134 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let interval;
 
-  function goToSection(index) {
-    currentIndex = index;
-    carousel.style.transform = `translateX(-${index * 100}vw)`;
-    updateProgressBars(index);
-  }
+    function goToSection(index) {
+      currentIndex = index;
+      carousel.style.transform = `translateX(-${index * 100}vw)`;
+      updateProgressBars(index);
+    }
 
-  function updateProgressBars(index) {
-    progressFills.forEach((fill, i) => {
-      fill.style.width = i === index ? '103%' : '0%';
-    });
-  }
+    function updateProgressBars(index) {
+      progressFills.forEach((fill, i) => {
+        fill.style.width = i === index ? '103%' : '0%';
+      });
+    }
 
-  // Botones manuales
     buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        const index = parseInt(button.getAttribute('data-index'));
-        goToSection(index);
-        resetInterval();
-    });
+      button.addEventListener('click', onButtonClick);
     });
 
-  // Autoplay
+    function onButtonClick() {
+      const index = parseInt(this.getAttribute('data-index'));
+      goToSection(index);
+      resetInterval();
+    }
+
     function startAutoSlide() {
-    interval = setInterval(() => {
+      interval = setInterval(() => {
         currentIndex = (currentIndex + 1) % totalSections;
         goToSection(currentIndex);
-    }, 5000);
+      }, 5000);
     }
 
     function resetInterval() {
-    clearInterval(interval);
-    startAutoSlide();
+      clearInterval(interval);
+      startAutoSlide();
     }
 
     startAutoSlide();
 
-  // Swipe/drag funcionalidad
+    // Swipe/drag
     let startX = 0;
     let isDragging = false;
-  let threshold = 50; // mínimo para considerar swipe
+    let threshold = 50;
 
-  // Mouse events
-    carousel.addEventListener('mousedown', (e) => {
-    startX = e.clientX;
-    isDragging = true;
-    });
+    function onMouseDown(e) {
+      startX = e.clientX;
+      isDragging = true;
+    }
 
-    window.addEventListener('mouseup', (e) => {
-    if (!isDragging) return;
-    const delta = e.clientX - startX;
-    handleSwipe(delta);
-    isDragging = false;
-    });
+    function onMouseUp(e) {
+      if (!isDragging) return;
+      const delta = e.clientX - startX;
+      handleSwipe(delta);
+      isDragging = false;
+    }
 
-  // Touch events
-    carousel.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-    });
+    function onTouchStart(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }
 
-    carousel.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    const endX = e.changedTouches[0].clientX;
-    const delta = endX - startX;
-    handleSwipe(delta);
-    isDragging = false;
-    });
+    function onTouchEnd(e) {
+      if (!isDragging) return;
+      const endX = e.changedTouches[0].clientX;
+      const delta = endX - startX;
+      handleSwipe(delta);
+      isDragging = false;
+    }
 
     function handleSwipe(delta) {
-    if (Math.abs(delta) > threshold) {
+      if (Math.abs(delta) > threshold) {
         if (delta > 0) {
-        currentIndex = Math.max(0, currentIndex - 1); // Swipe a la derecha
+          currentIndex = Math.max(0, currentIndex - 1);
         } else {
-        currentIndex = Math.min(totalSections - 1, currentIndex + 1); // Swipe a la izquierda
+          currentIndex = Math.min(totalSections - 1, currentIndex + 1);
         }
         goToSection(currentIndex);
         resetInterval();
+      }
     }
+
+    carousel.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mouseup', onMouseUp);
+    carousel.addEventListener('touchstart', onTouchStart);
+    carousel.addEventListener('touchend', onTouchEnd);
+
+    initialized = true;
+
+    // Devuelve una función de limpieza para quitar los listeners si cambia a móvil
+    cleanup = () => {
+      clearInterval(interval);
+      buttons.forEach(button => {
+        button.removeEventListener('click', onButtonClick);
+      });
+      carousel.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mouseup', onMouseUp);
+      carousel.removeEventListener('touchstart', onTouchStart);
+      carousel.removeEventListener('touchend', onTouchEnd);
+    };
+  }
+
+  function checkView(e) {
+  if (!e.matches && !initialized) {
+    initCarousel();
+  } else if (e.matches && initialized) {
+    cleanup();
+    initialized = false;
+    const carousel = document.getElementById('carousel');
+    if (carousel) {
+      carousel.style.transform = 'translateX(0)';
     }
+    console.log("Carrusel desactivado por tamaño móvil");
+  }
+}
+  // Detectar al cargar
+  checkView(mediaQuery);
+
+  // Escuchar cambios
+  mediaQuery.addEventListener("change", checkView);
 });
+
+const items = document.querySelectorAll('.proceso__carousel-item');
+
+function checkVisibility() {
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      item.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility);

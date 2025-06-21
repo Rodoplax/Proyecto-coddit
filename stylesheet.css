@@ -5,12 +5,14 @@
     --color-secundario: #DEDCFF;
     --background: #021526;
     --color-accent: #433BFF;
-    --color-comillas: #BB7300;
+    --color-comillas: #BB7300;  
     --texto: #FFFFFF;
     --circle-size: 200vmax;
     scroll-behavior: smooth;
 }
-
+::selection{
+    border-radius: 20px;
+}
 @font-face {
     font-family: "Anek Telugu"; /*sans-serif */
     src: url('assets/fonts/AnekTelugu-VariableFont_wdth\,wght.ttf') format('truetype');
@@ -815,7 +817,6 @@ header {
     line-height: 2.25;
     max-width: 1200px;
     letter-spacing: 0.02em;
-    outline: 1px solid red;
 }
 .exito__impulsar{
     font-family: 'Bungee';
@@ -846,10 +847,10 @@ header {
     }
     .exito__p{
         width: 100vw;
-        font-size:clamp(1.25rem, 4vw, 1.5rem);
+        font-size:clamp(1rem, 3.2vw, 1.25rem);
     }
     .exito__impulsar{
-    padding: 10px 13px;
+    padding: 10px 10px;
     }
 }
 
@@ -875,6 +876,10 @@ header {
     margin-bottom: 100px;
     border-bottom: 4px solid var(--color-principal);
     border-radius: 2px;
+}
+.proceso__titulo::before{
+    content:'';
+
 }
 
 .proceso__circulos{
@@ -949,7 +954,6 @@ header {
     font-family: 'Nunito', sans-serif;
 }
 
-
 .btn-progreso{
     width: clamp(6vw, 8vw, 10vw);
     aspect-ratio: 10/1;
@@ -984,6 +988,159 @@ header {
 .controles{
     cursor: pointer;
 }
+
+@media ( width < 768px){   
+    .proceso__carousel{
+        width: 100vw;
+        flex-direction: column;
+        gap:100px; 
+    }
+    .controles{
+        display: none;
+    }
+    .proceso__carousel-item{
+        /* outline: 1px solid red; */
+        margin: 20px 0;
+    }
+    .proceso__carousel-item {
+    height: 30vh;
+    }
+    .proceso{
+    height: fit-content;
+    }
+    .proceso__p{
+    font-size: clamp(1.25rem, 1vw, 1.75rem);
+    padding: 10px 15vw;
+    }
+    .proceso__carousel-item {
+    opacity: 0;
+    transform: translateY(65%);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .proceso__carousel-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }   
+}
+/*------------------------FAQ------------------------*/
+.faq{
+    height: 100vh;
+    width: 100vw;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 50px;
+    font-family: "Nunito", sans-serif;
+    margin-top: 20%;
+}
+
+.faq__simbolos{
+    display: flex;
+    flex-direction: row;
+    font-size: clamp(5rem, 10vw, 6.75rem);
+    justify-content: space-around;
+    color: var(--color-comillas);
+}
+
+.faq__titulo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    color: var(--texto);
+    border-bottom: 2px solid var(--texto);
+}
+
+.faq__question summary {
+    font-size: clamp(1.5rem, 3.25vw, 2.5rem);
+    color: var(--texto);
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top: 2px solid var(--color-secundario);
+    border-top-left-radius: 10px;
+    padding: 15px 0;
+}
+.faq__question:last-of-type summary{
+    border-bottom: 2px solid var(--color-secundario);
+}
+
+.faq__question > p{
+    font-size: clamp(1.25rem, 1.75vw, 1.5rem);
+    color: #DEDCFF;
+    margin: 20px 0px 20px 40px;
+}
+
+.faq__question summary::marker {
+    display: none;
+}
+
+.faq__question summary::after {
+    content: "+";
+    color: #f5b11f;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: max(40px, 4vw);
+}
+
+.faq__question[open] summary::after {
+    content: "−";
+}
+
+footer{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 200px;
+}
+
+.footer__carrusel-mini{
+    width: 100vw;
+    height: 10vh;
+    border-top-bottom: 1px solid;
+}
+
+.footer__marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.marquee__content {
+    display: inline-block;
+    animation: scroll 17s linear infinite;
+}
+
+.marquee__content span {
+    display: inline-block;
+    margin-right: 75px;
+    color: var(--texto);
+    font-size: clamp(3.25rem, 3.75vw, 4.5rem);
+    margin-right: 85px;
+}
+
+.footer__content{
+    display: grid;
+    
+}
+
+@keyframes scroll {
+    0% {
+    transform: translateX(0%);
+    }
+    100% {
+    transform: translateX(-50%);
+    }
+}
+
+
+
+
+
 
 
 
