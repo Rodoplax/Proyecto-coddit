@@ -1089,17 +1089,15 @@ header {
 .faq__question[open] summary::after {
     content: "−";
 }
-
+/* ---------------------------footer------------------------------- */
 footer{
     width: 100vw;
-    height: 100vh;
     margin-top: 200px;
 }
 
 .footer__carrusel-mini{
     width: 100vw;
     height: 10vh;
-    border-top-bottom: 1px solid;
 }
 
 .footer__marquee {
@@ -1121,13 +1119,87 @@ footer{
     color: var(--texto);
     font-size: clamp(3.25rem, 3.75vw, 4.5rem);
     margin-right: 85px;
+    font-family: "Nunito", sans-serif;
 }
 
 .footer__content{
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px repeat(4, 1fr);
+    padding: 0 70px;
+    padding-bottom: 60px;
+    grid-template-areas: 
+    "redes redes"
+    "contacto flecha"
+    "contacto ."
+    "legal ."
+    "legal ."
+    ". texto";
+    width: min(100vw 1200px);
+    height: 80vh;
+    font-family: "Nova Flat", sans-serif;
+    color: var(--color-secundario);
+    background: linear-gradient(to top left, var(--color-principal) 4%, var(--background) 43%);
+}
+.footer__enlaces{
+    grid-area: redes;
+}
+.footer__contacto{
+    grid-area: contacto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer__contacto h3{
+    color: var(--texto);
+    font-size: clamp(2.35rem, 2.5vw, 2.5rem);
+}
+.footer__contacto p{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(1.25rem, 1.5vw, 2rem);
+}
+.footer__legal{
+    grid-area: legal;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+.footer__legal h3{
+    font-size: clamp(2.35rem, 2.5vw, 2.5rem);
+}
+.footer__legal a{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(1.25rem, 1.5vw, 2rem);
+}
+.footer__texto{
+    grid-area: texto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer__bycoddit{
+    width: 100vw;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid var(--color-secundario);
+    font-family: "Nova Flat", sans-serif;
+    color: var(--texto)
+}
+.coddit__link{
+    font-family: "Nova Flat", sans-serif;
+    color: var(--texto);
+    text-decoration: underline;
     
 }
-
+.footer__flecha{
+    grid-area: flecha;
+}
 @keyframes scroll {
     0% {
     transform: translateX(0%);
