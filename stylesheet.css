@@ -64,7 +64,7 @@ ul{
 a{
     text-decoration: none;
     color: var(--texto);
-}
+} 
 img {
     pointer-events: none;
     user-drag: none;
@@ -202,6 +202,7 @@ header {
         transform-origin: center;
         transition: transform 0.3s ease, opacity 0.3s ease, top 0.4s ease;
         position: absolute;
+        cursor: pointer;
     }
     .nav__hamburger-bar:nth-child(1) {
         transform: rotate(0deg);
@@ -965,7 +966,6 @@ header {
 }
 
 .proceso__carousel-container {
-    overflow: hidden;
     width: 100vw;
     margin: 50px 0;
 }
@@ -1024,7 +1024,7 @@ header {
 }
 /*------------------------FAQ------------------------*/
 .faq{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     max-width: 1200px;
     margin: auto;
@@ -1050,7 +1050,9 @@ header {
     color: var(--texto);
     border-bottom: 2px solid var(--texto);
 }
-
+.faq__question:last-child{
+    border-bottom: 2px solid var(--color-secundario);
+}
 .faq__question summary {
     font-size: clamp(1.5rem, 3.25vw, 2.5rem);
     color: var(--texto);
@@ -1062,9 +1064,9 @@ header {
     border-top-left-radius: 10px;
     padding: 15px 0;
 }
-.faq__question:last-of-type summary{
-    border-bottom: 2px solid var(--color-secundario);
-}
+/*.faq__question:last-of-type summary{
+    border-bottom: 20px solid var(--color-secundario);
+}*/
 
 .faq__question > p{
     font-size: clamp(1.25rem, 1.75vw, 1.5rem);
@@ -1123,16 +1125,16 @@ footer{
 }
 
 .footer__content{
-    display: grid;
+    display: grid; 
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 50px repeat(4, 1fr);
-    padding: 0 70px;
+    padding: 0 55px;
     padding-bottom: 60px;
     grid-template-areas: 
     "redes redes"
-    "contacto flecha"
     "contacto ."
-    "legal ."
+    "contacto ."
+    "legal flecha"
     "legal ."
     ". texto";
     width: min(100vw 1200px);
@@ -1143,6 +1145,15 @@ footer{
 }
 .footer__enlaces{
     grid-area: redes;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px ;
+}
+.footer__enlaces img{
+    width: 30px;
+    height: 30px;
 }
 .footer__contacto{
     grid-area: contacto;
@@ -1152,11 +1163,13 @@ footer{
 }
 .footer__contacto h3{
     color: var(--texto);
-    font-size: clamp(2.35rem, 2.5vw, 2.5rem);
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
 }
 .footer__contacto p{
+    color: var(--color-secundario);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(1.25rem, 1.5vw, 2rem);
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    text-wrap: nowrap;
 }
 .footer__legal{
     grid-area: legal;
@@ -1166,11 +1179,13 @@ footer{
     margin-top: 40px;
 }
 .footer__legal h3{
-    font-size: clamp(2.35rem, 2.5vw, 2.5rem);
+    color: var(--texto);
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
 }
 .footer__legal a{
+    color: var(--color-secundario);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(1.25rem, 1.5vw, 2rem);
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
 }
 .footer__texto{
     grid-area: texto;
@@ -1179,6 +1194,9 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    position: relative;
+    top: 20px;
 }
 .footer__bycoddit{
     width: 100vw;
@@ -1189,7 +1207,19 @@ footer{
     align-items: center;
     border-top: 2px solid var(--color-secundario);
     font-family: "Nova Flat", sans-serif;
-    color: var(--texto)
+    color: var(--texto);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    background-color: var(--background)
+}
+.just__decoration{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 50px;
+    right: 0;
+    background-color: var(--color-principal);
+    z-index: -1;
 }
 .coddit__link{
     font-family: "Nova Flat", sans-serif;
@@ -1199,6 +1229,18 @@ footer{
 }
 .footer__flecha{
     grid-area: flecha;
+    transform: rotate(180deg);
+}
+.footer__flecha .flecha{
+    margin: unset;
+}
+@media ( width < 768px){
+    .footer__legal{
+        gap: 10px;
+    }
+    .footer__contacto{
+        gap: 10px;
+    }
 }
 @keyframes scroll {
     0% {
@@ -1231,4 +1273,7 @@ footer{
     0. Poner los textos definitivos.
     1. Arreglar bugs finales.
 
+
+    Tareas para Peter La anguila
+    0. Cambiar el grid del footer por un flex para arreglar el diseño en ordenador. 
 */
