@@ -174,3 +174,27 @@ function checkVisibility() {
 
 window.addEventListener('scroll', checkVisibility);
 window.addEventListener('load', checkVisibility);
+
+
+/* Círculos de la página de servicios */
+
+const circulos = document.querySelectorAll('.circulo');
+const modal = document.getElementById('infoModal');
+const modalTitulo = document.getElementById('modalTitulo');
+const modalTexto = document.getElementById('modalTexto');
+
+circulos.forEach(circle => {
+  circle.addEventListener('click', () => {
+    const titulo = circle.getAttribute('data-title'); // asegúrate que sea 'data-title'
+    const desc = circle.getAttribute('data-desc');
+    modalTitulo.textContent = titulo || 'Sin título';
+    modalTexto.textContent = desc || 'Sin descripción';
+    modal.style.display = 'flex';
+  });
+});
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+

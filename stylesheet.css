@@ -99,7 +99,6 @@ header {
     z-index: 10000000;
     transition: top 0.5s ease-in-out;
 }
-
 .nav__ul{
     display: flex;
     gap: min(30px, 3vw);
@@ -147,7 +146,6 @@ header {
 .nav__li--btn:hover {
     transform: scale(1.05);
 }
-
 @media (width < 768px) {
     header {
         width:65%;
@@ -1212,7 +1210,7 @@ footer{
     border-top-right-radius: 100px;
     background-color: var(--background)
 }
-.just__decoration{
+.just-decoration{
     content: '';
     position: absolute;
     width: 50%;
@@ -1252,11 +1250,171 @@ footer{
 }
 
 
+/* ---------------------------/servicios------------------------------- */
 
+.servicios{
+    margin-top: 8%;
+    outline: 1px solid red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.servicios__h3{
+    padding: 25px 0;
+    color: var(--texto);
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    max-width: 100%;
+    font-weight: 700;
+    margin: auto;
+}
+.una__web{
+    color: var(--color-secundario);
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+    font-weight: 100;
+    margin: auto;
+}
 
+.servicios__p{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    color: var(--color-secundario);
+    width: 70%;
+    text-align: center;
+}
 
+.circulos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    outline: 2px solid red;
+}
+.circulos-container {
+    position: relative;
+    width: 260px; /* Modificar para cambiar la separación de los circulos entre sí*/
+    aspect-ratio: 1/1;
+}
 
+.circulo {
+    width: 160px; /* Modificar para cambiar el tamaño de cada uno */
+    aspect-ratio: 1/1;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    background-color: var(--background);
+    transition: background-color 1s, width 1s, font-size .6s, letter-spacing 1s, top 1s, left 2s, border-width 1s linear;
+}
 
+.circulo.blue {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circulo.seo {
+    top: 40%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.circulo.design {
+    top: 100%;
+    left: 81.5%;
+    transform: translate(-50%, -50%);
+}
+
+.circulo.environment {
+    top: 100%;
+    left: 18.5%;
+    transform: translate(-50%, -50%);
+}
+
+.circulo.name {
+    top: 40%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+}
+.circulo:hover{
+    z-index: 100;
+    background-color: #4834d4;
+    width: 160px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.circulo:focus{
+    z-index: 101;
+    background-color: #4834d4;
+    width: 160px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    top: 50%;
+    left:50%;
+    border-width: 0;
+}
+.modal {
+    position: fixed;
+    bottom: 30px;
+    background-color: var(--color-accent)/* #7209b7 */;
+    color: white;
+    padding: 40px 30px;
+    border-radius: 30px;
+    width: 80%;
+    max-width: 500px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    animation: fadeInUp 0.4s ease;
+    font-family: 'Nunito', sans-serif;
+}
+
+.modal h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.modal p {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 
 /* 
@@ -1267,6 +1425,7 @@ footer{
     3. Hacer la página accesible, añadir etiquetas aria y roles.
     4. Poner los enlaces de cada botón, flecha y cosas.
     5. Arreglar bugs con el responsive --> El semicirculo atraviesa otra sección en algunos diseños, el inicio hay que quitar los border y arreglar los cuadrados.
+    6. Hacer que en el nav de móvil al hacer hover se ponga en modo cursor en todo el cuadrado no solo en las barras.
 
 
     Tareas finales
@@ -1276,4 +1435,5 @@ footer{
 
     Tareas para Peter La anguila
     0. Cambiar el grid del footer por un flex para arreglar el diseño en ordenador. 
+    1. Cambiar el grid del puticlub "Los Ángeles de Charlie"
 */
