@@ -1,4 +1,3 @@
-
 // Menú hamburguesa en movil //
 
 
@@ -7,6 +6,7 @@ let nav = document.getElementById("nav");
 
 menu.addEventListener("click", ()=>{
     nav.classList.toggle("nav__open");
+    document.body.classList.toggle("no-scroll");
     menu.classList.toggle("open");
 });
 
@@ -185,7 +185,7 @@ const modalTexto = document.getElementById('modalTexto');
 
 circulos.forEach(circle => {
   circle.addEventListener('click', () => {
-    const titulo = circle.getAttribute('data-title'); // asegúrate que sea 'data-title'
+    const titulo = circle.getAttribute('data-title');
     const desc = circle.getAttribute('data-desc');
     modalTitulo.textContent = titulo || 'Sin título';
     modalTexto.textContent = desc || 'Sin descripción';
@@ -196,5 +196,34 @@ circulos.forEach(circle => {
 function closeModal() {
   modal.style.display = 'none';
 }
+
+circulos.forEach(circulo => {
+  circulo.addEventListener('click', () => {
+    circulo.classList.toggle('circulo-focus');
+    document.body.classList.add("no-scroll");
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.style.display = circulo.classList.contains('circulo-focus') ? 'flex' : 'none';
+    }
+  })
+  circulo.addEventListener('mouseenter', () => {
+    if (circulo.classList.contains('circulo-focus') == false) {
+      circulo.classList.toggle('circulo-hover');
+    }
+  })
+  circulo.addEventListener('mouseleave', () => {
+    if (circulo.classList.contains('circulo-focus') == false) {
+      circulo.classList.remove('circulo-hover');
+    }
+  })
+});
+
+const x = document.querySelector('.close-btn');
+x.addEventListener('click', () => {
+  circulos.forEach(circulo => {
+    circulo.classList.remove('circulo-focus');
+    document.body.classList.remove("no-scroll");
+  });
+}) 
 
 

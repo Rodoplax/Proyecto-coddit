@@ -76,6 +76,10 @@ body {
     width:100vw;
     overflow-x: hidden;
 }
+body.no-scroll {
+  overflow: hidden;
+}
+
 main{
     overflow: hidden;
 }
@@ -189,6 +193,7 @@ header {
         width: clamp(30px, 8vw, 60px);
         z-index: 1000000000;
         position: relative;
+        cursor: pointer;
     }
     .nav__hamburger-bar{
         display: block;
@@ -200,7 +205,6 @@ header {
         transform-origin: center;
         transition: transform 0.3s ease, opacity 0.3s ease, top 0.4s ease;
         position: absolute;
-        cursor: pointer;
     }
     .nav__hamburger-bar:nth-child(1) {
         transform: rotate(0deg);
@@ -997,7 +1001,6 @@ header {
         display: none;
     }
     .proceso__carousel-item{
-        /* outline: 1px solid red; */
         margin: 20px 0;
     }
     .proceso__carousel-item {
@@ -1091,8 +1094,9 @@ header {
 }
 /* ---------------------------footer------------------------------- */
 footer{
-    width: 100vw;
+    max-width: 100vw;
     margin-top: 200px;
+    background: linear-gradient(-45deg, var(--color-principal) 6%, var(--background) 48%);
 }
 
 .footer__carrusel-mini{
@@ -1121,80 +1125,73 @@ footer{
     margin-right: 85px;
     font-family: "Nunito", sans-serif;
 }
-
-.footer__content{
-    display: grid; 
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px repeat(4, 1fr);
-    padding: 0 55px;
-    padding-bottom: 60px;
-    grid-template-areas: 
-    "redes redes"
-    "contacto ."
-    "contacto ."
-    "legal flecha"
-    "legal ."
-    ". texto";
-    width: min(100vw 1200px);
-    height: 80vh;
-    font-family: "Nova Flat", sans-serif;
-    color: var(--color-secundario);
-    background: linear-gradient(to top left, var(--color-principal) 4%, var(--background) 43%);
-}
 .footer__enlaces{
-    grid-area: redes;
     display: flex;
     justify-content: center;
     gap: 20px;
     align-items: center;
-    margin-top: 20px ;
+    margin-top: 20px;
 }
 .footer__enlaces img{
-    width: 30px;
-    height: 30px;
+    width: min(100px, 4.5vw);
+    aspect-ratio: 1 / 1;
 }
+.footer__content{
+    padding: 60px;
+    padding-top: 10px;
+    width: 100vw;
+    position: relative;
+    font-family: "Nova Flat", sans-serif;
+    color: var(--color-secundario);
+    display: flex;
+    gap: 40px;
+    min-height: fit-content;
+    max-height: 60vh;
+    flex-direction: column;
+}
+
 .footer__contacto{
-    grid-area: contacto;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: fit-content;
+    height: fit-content;
 }
 .footer__contacto h3{
     color: var(--texto);
-    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
 }
 .footer__contacto p{
     color: var(--color-secundario);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    font-size: clamp(1.15rem, 1.5vw, 1.75rem);
     text-wrap: nowrap;
 }
 .footer__legal{
-    grid-area: legal;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 40px;
+    width: fit-content;
+    height: fit-content;
 }
 .footer__legal h3{
     color: var(--texto);
-    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
 }
 .footer__legal a{
     color: var(--color-secundario);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    font-size: clamp(1.15rem, 1.5vw, 1.75rem);
 }
 .footer__texto{
-    grid-area: texto;
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
-    position: relative;
-    top: 20px;
+    font-size: clamp(.75rem, 2vw, 2.25rem);
+    max-width: 40%;
+    position: absolute;
+    right: 40px;
+    bottom: 60px;
 }
 .footer__bycoddit{
     width: 100vw;
@@ -1210,15 +1207,6 @@ footer{
     border-top-right-radius: 100px;
     background-color: var(--background)
 }
-.just-decoration{
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 50px;
-    right: 0;
-    background-color: var(--color-principal);
-    z-index: -1;
-}
 .coddit__link{
     font-family: "Nova Flat", sans-serif;
     color: var(--texto);
@@ -1226,8 +1214,10 @@ footer{
     
 }
 .footer__flecha{
-    grid-area: flecha;
     transform: rotate(180deg);
+    position: absolute;
+    top:50%;
+    right: 10%;
 }
 .footer__flecha .flecha{
     margin: unset;
@@ -1239,6 +1229,7 @@ footer{
     .footer__contacto{
         gap: 10px;
     }
+    
 }
 @keyframes scroll {
     0% {
@@ -1253,35 +1244,38 @@ footer{
 /* ---------------------------/servicios------------------------------- */
 
 .servicios{
-    margin-top: 8%;
-    outline: 1px solid red;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 180px;
+    margin-bottom: 175px;
 }
 .servicios__h3{
     padding: 25px 0;
     color: var(--texto);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     max-width: 100%;
     font-weight: 700;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    text-align: center;
 }
 .una__web{
     color: var(--color-secundario);
     font-family: "Nunito", sans-serif;
-    font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+    font-size: clamp(2.75rem, 5.25vw, 4.5rem);
     font-weight: 100;
     margin: auto;
 }
 
 .servicios__p{
     font-family: "Nunito", sans-serif;
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    font-size: clamp(1.15rem, 1.75vw, 1.75rem);
     color: var(--color-secundario);
     width: 70%;
     text-align: center;
@@ -1292,16 +1286,15 @@ footer{
     justify-content: center;
     align-items: center;
     margin-top: 200px;
-    outline: 2px solid red;
 }
 .circulos-container {
     position: relative;
-    width: 260px; /* Modificar para cambiar la separación de los circulos entre sí*/
+    width: 300px; /* Modificar para cambiar la separación de los circulos entre sí*/
     aspect-ratio: 1/1;
 }
 
 .circulo {
-    width: 160px; /* Modificar para cambiar el tamaño de cada uno */
+    width: 190px; /* Modificar para cambiar el tamaño de cada uno */
     aspect-ratio: 1/1;
     position: absolute;
     border-radius: 50%;
@@ -1314,7 +1307,8 @@ footer{
     font-size: 14px;
     text-align: center;
     background-color: var(--background);
-    transition: background-color 1s, width 1s, font-size .6s, letter-spacing 1s, top 1s, left 2s, border-width 1s linear;
+    transition: background-color 1s, width 1s, font-size .6s, letter-spacing 1s, top 1s, left 2s, border-width 1s linear, border-color 1s linear;
+    cursor: pointer;
 }
 
 .circulo.blue {
@@ -1346,40 +1340,41 @@ footer{
     left: 0%;
     transform: translate(-50%, -50%);
 }
-.circulo:hover{
+.circulo-hover{
     z-index: 100;
-    background-color: #4834d4;
-    width: 160px;
+    background-color: var(--color-accent);
+    width: 220px;
     font-size: 18px;
     letter-spacing: 1px;
+    border: 0 solid transparent;
 }
-.circulo:focus{
-    z-index: 101;
-    background-color: #4834d4;
-    width: 160px;
+.circulo-focus{/* Tenemos que hacer que con js se cierre el circulo y el modal al hacer click y no con focus */
+    z-index: 10000000;
+    background-color: var(--color-principal);
+    width: max(220vw, 220vh);
     font-size: 18px;
     letter-spacing: 1px;
-    top: 50%;
-    left:50%;
     border-width: 0;
+    color: transparent;
 }
-.modal {
+.modal{ 
     position: fixed;
-    bottom: 30px;
     background-color: var(--color-accent)/* #7209b7 */;
     color: white;
     padding: 40px 30px;
     border-radius: 30px;
     width: 80%;
-    max-width: 500px;
+    aspect-ratio: 3/1;
     display: none;
     flex-direction: column;
     align-items: center;
-    z-index: 10;
-    animation: fadeInUp 0.4s ease;
+    z-index: 10000000;
+    animation: fadeInUp 1s linear;
     font-family: 'Nunito', sans-serif;
+    bottom: 50%;
+    transform: translateY(50%);
+    justify-content: center;
 }
-
 .modal h2 {
     margin: 0 0 10px;
     font-size: 24px;
@@ -1407,11 +1402,9 @@ footer{
 
 @keyframes fadeInUp {
     from {
-        transform: translateY(40px);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
         opacity: 1;
     }
 }
