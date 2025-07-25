@@ -201,10 +201,15 @@ circulos.forEach(circulo => {
   circulo.addEventListener('click', () => {
     circulo.classList.toggle('circulo-focus');
     document.body.classList.add("no-scroll");
+    /* circulo.style.zIndex = 1000000;
+    if (circulo.classList.contains('circulo-focus') == false){
+      document.body.classList.remove("no-scroll");
+      setTimeout(() => {
+        circulo.style.zIndex = 1;
+      }, 1001);
+    }  *//* Me cago en mi reverenda madre. Esto está con mas bugs que el campo de Javier */
     const modal = document.querySelector('.modal');
-    if (modal) {
-      modal.style.display = circulo.classList.contains('circulo-focus') ? 'flex' : 'none';
-    }
+    modal.style.display = circulo.classList.contains('circulo-focus') ? 'flex' : 'none';
   })
   circulo.addEventListener('mouseenter', () => {
     if (circulo.classList.contains('circulo-focus') == false) {
@@ -224,6 +229,16 @@ x.addEventListener('click', () => {
     circulo.classList.remove('circulo-focus');
     document.body.classList.remove("no-scroll");
   });
-}) 
+});
 
+const modale = document.querySelector('.modal');
+const closeBtn = document.querySelector('.close-btn');
+
+closeBtn.addEventListener('click', () => {
+  modale.style.display = 'none';
+  circulos.forEach(circulo => {
+    circulo.classList.remove('circulo-focus');
+    document.body.classList.remove("no-scroll");
+  });
+});
 

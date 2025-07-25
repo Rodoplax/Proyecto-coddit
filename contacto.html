@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>  
@@ -37,31 +36,40 @@
             <nav id="nav">
                 <ul class="nav__ul">
                     <li class="nav__li"><a href="#">Proyectos</a></li>
-                    <li class="nav__li"><a href="#">Servicios</a></li>
+                    <li class="nav__li"><a href="servicios.html">Servicios</a></li>
                     <li class="nav__li"><a href="#">¿Cómo trabajamos?</a></li>
                     <li class="nav__li nav__li--btn"><a href="contacto.html">Contáctanos</a></li>
                 </ul>
             </nav>
         </header>
-        <section class="servicios">
-            <h2 class="servicios__h3">NO ES SOLO <div class="una-web">"UNA WEB"</div></h2>
-            <p class="servicios__p">“No es solo una web ya que el trabajo previo follar a pedro a la web es mucho más amplio para satisfacer tus necesidades tal y como lo habías pensado”</p>
-            <div class="circulos">
-                <div class="circulos-container">
-                    <div tabindex="1" class="circulo blue" data-title="Ux/Ui" data-desc="Investigamos la marca a fondo para transmitir su identidad de manera coherente.">Ux/Ui</div>
-                    <div tabindex="2" class="circulo seo" data-title="SEO" data-desc="Investigamos la marca a fondo para transmitir su identidad de manera coherente.">SEO</div>
-                    <div tabindex="3" class="circulo design" data-title="Diseño y desarrollo" data-desc="Investigamos la marca a fondo para transmitir su identidad de manera coherente.">Diseño y<br>desarrollo</div>
-                    <div tabindex="4" class="circulo environment" data-title="Estudio de entorno" data-desc="Investigamos la marca a fondo para transmitir su identidad de manera coherente.">Estudio de<br>entorno</div>
-                    <div tabindex="5" class="circulo name" data-title="Estudio de entorno" data-desc="Investigamos la marca a fondo para transmitir su identidad de manera coherente.">Porno</div>
+        <section class="contacto__fs">
+            <div class="contacto__texto__container">
+                <h1 class="contacto__titulo">Impulsemos tu negocio<span class="juntos"> juntos<span></h1>
+                <p class="contacto__texto">¡No te equivocas eligiendonos! 
+    Estaremos en contacto durante todo el tiempo que trabajemos en tu proyecto y nuestro equipo hará que tu web se convierta en realidad tal y como lo habias imaginado.</p>
                 </div>
-            </div>
-            <div class="modal" id="infoModal">
-                <h2 id="modalTitulo">Título</h2>
-                <p id="modalTexto">Texto descriptivo</p>
-                <button class="close-btn" onclick="closeModal()">✕</button>
-            </div>
         </section>
-        <footer class="footer">
+        <section class="contacto__formulario">
+            <form class="contacto__form">
+                <label for="nombre" class="contacto__label">Nombre</label>
+                <input type="text" id="contacto__nombre" class="contacto__input" placeholder="Tu nombre" required>
+
+                <label for="email" class="contacto__label">Email</label>
+                <input type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
+
+                <label for="telefono" class="contacto__label">Teléfono</label>
+                <input type="tel" id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
+
+                <label for="empresa" class="contacto__label">Empresa</label>
+                <input type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
+
+                <label for="mensaje" class="contacto__label">Mensaje</label>
+                <textarea id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
+            
+            </form>
+
+        </section>
+    <footer class="footer">
             <div class="footer__marquee">
                     <div class="marquee__content">
                         <span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span>
