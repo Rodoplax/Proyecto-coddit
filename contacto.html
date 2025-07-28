@@ -32,8 +32,8 @@
                 <span class="nav__hamburger-bar"></span>
                 <span class="nav__hamburger-bar"></span>
                 <span class="nav__hamburger-bar"></span>
-            </a>
-            <nav id="nav">
+            </a> 
+            <nav id="nav"> 
                 <ul class="nav__ul">
                     <li class="nav__li"><a href="#">Proyectos</a></li>
                     <li class="nav__li"><a href="servicios.html">Servicios</a></li>
@@ -48,26 +48,38 @@
                 <p class="contacto__texto">¡No te equivocas eligiendonos! 
     Estaremos en contacto durante todo el tiempo que trabajemos en tu proyecto y nuestro equipo hará que tu web se convierta en realidad tal y como lo habias imaginado.</p>
                 </div>
-        </section>
-        <section class="contacto__formulario">
+        
+        <div class="contacto">
+
+            <h3 class="titulo__form">Cuéntanos, <span class="sub__form">nosotros nos encargamos</span></h3>
             <form class="contacto__form">
-                <label for="nombre" class="contacto__label">Nombre</label>
-                <input type="text" id="contacto__nombre" class="contacto__input" placeholder="Tu nombre" required>
+               
+                <div class="contacto__form-container">
+                     <label for="nombre" class="contacto__label">Nombre</label>
+                    <input type="text" id="contacto__nombre" class="contacto__input" placeholder="Tu nombre" required>
+                </div>
+                <div class="contacto__form-container">
+                    <label for="email" class="contacto__label">Email</label>
+                    <input type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
+                </div>
 
-                <label for="email" class="contacto__label">Email</label>
-                <input type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
-
-                <label for="telefono" class="contacto__label">Teléfono</label>
-                <input type="tel" id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
-
-                <label for="empresa" class="contacto__label">Empresa</label>
-                <input type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
-
-                <label for="mensaje" class="contacto__label">Mensaje</label>
-                <textarea id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
+                <div class="contacto__form-container">
+                    <label for="telefono" class="contacto__label">Teléfono</label>
+                    <input type="tel" id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
+                </div>
+                <div class="contacto__form-container">
+                     <label for="empresa" class="contacto__label">Empresa</label>
+                    <input type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
+                </div>
+               
+                <div class="contacto__form-container">
+                    <label for="mensaje" class="contacto__label">Mensaje</label>
+                    <textarea id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
+                </div>
+                
             
             </form>
-
+        </div>
         </section>
     <footer class="footer">
             <div class="footer__marquee">
