@@ -1,5 +1,17 @@
-// Menú hamburguesa en movil //
 
+
+// error nav //
+
+document.querySelectorAll('#nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('nav__open');
+        document.body.classList.remove('no-scroll');
+        menu.classList.remove('open');
+    });
+});
+
+
+// Menú hamburguesa en movil //
 
 let menu = document.querySelector(".nav__hamburger");
 let nav = document.getElementById("nav");
@@ -241,4 +253,8 @@ closeBtn.addEventListener('click', () => {
     document.body.classList.remove("no-scroll");
   });
 });
+
+
+
+
 
