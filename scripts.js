@@ -1,5 +1,3 @@
-
-
 // error nav //
 
 document.querySelectorAll('#nav a').forEach(link => {
@@ -194,14 +192,16 @@ const circulos = document.querySelectorAll('.circulo');
 const modal = document.getElementById('infoModal');
 const modalTitulo = document.getElementById('modalTitulo');
 const modalTexto = document.getElementById('modalTexto');
+const servicios = document.querySelector('.servicios');
 
-circulos.forEach(circle => {
-  circle.addEventListener('click', () => {
-    const titulo = circle.getAttribute('data-title');
-    const desc = circle.getAttribute('data-desc');
+circulos.forEach(circulo => {
+  circulo.addEventListener('click', () => {
+    const titulo = circulo.getAttribute('data-title');
+    const desc = circulo.getAttribute('data-desc');
     modalTitulo.textContent = titulo || 'Sin título';
     modalTexto.textContent = desc || 'Sin descripción';
     modal.style.display = 'flex';
+    
   });
 });
 
@@ -213,15 +213,9 @@ circulos.forEach(circulo => {
   circulo.addEventListener('click', () => {
     circulo.classList.toggle('circulo-focus');
     document.body.classList.add("no-scroll");
-    /* circulo.style.zIndex = 1000000;
-    if (circulo.classList.contains('circulo-focus') == false){
-      document.body.classList.remove("no-scroll");
-      setTimeout(() => {
-        circulo.style.zIndex = 1;
-      }, 1001);
-    }  *//* Me cago en mi reverenda madre. Esto está con mas bugs que el campo de Javier */
     const modal = document.querySelector('.modal');
     modal.style.display = circulo.classList.contains('circulo-focus') ? 'flex' : 'none';
+    servicios.classList.toggle('servicios-padding');
   })
   circulo.addEventListener('mouseenter', () => {
     if (circulo.classList.contains('circulo-focus') == false) {
@@ -235,25 +229,47 @@ circulos.forEach(circulo => {
   })
 });
 
-const x = document.querySelector('.close-btn');
-x.addEventListener('click', () => {
-  circulos.forEach(circulo => {
-    circulo.classList.remove('circulo-focus');
-    document.body.classList.remove("no-scroll");
-  });
-});
-
-const modale = document.querySelector('.modal');
 const closeBtn = document.querySelector('.close-btn');
-
 closeBtn.addEventListener('click', () => {
-  modale.style.display = 'none';
   circulos.forEach(circulo => {
+    
+    if (circulo.classList.contains('circulo-focus') == false) {
+      circulo.style.display = 'None';
+    }
+    setTimeout(() => {
+      circulo.style.display = 'flex';
+    }, 900)
     circulo.classList.remove('circulo-focus');
     document.body.classList.remove("no-scroll");
+    servicios.classList.remove('servicios-padding');
   });
 });
 
+
+//    Formulario de contacto    //
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.contacto__form');
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const datos = Object.fromEntries(new FormData(this).entries());
+      try {
+        const res = await fetch('http://localhost:3001/contacto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos)
+        });
+        const respuesta = await res.json();
+        alert(respuesta.message);
+        this.reset();
+      } catch (err) {
+        alert('Hubo un error al enviar el mensaje.');
+        console.error(err);
+      }
+    });
+  }
+});
 
 
 

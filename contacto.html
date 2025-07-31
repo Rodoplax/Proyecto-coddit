@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 <head>  
         <meta charset="utf-8">
         <link rel="canonical" href="https://www.coddit.com">
         <title>coddit</title>
-        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Expandete en la web con coddit. El mejor lugar para crear páginas web. Mejor precio, calidad y profesionalidad aseguradas.">
         <meta name="author" content="coddit">
         <meta name="copyright" name="coddit">
@@ -52,65 +52,65 @@
         <div class="contacto">
 
             <h3 class="titulo__form">Cuéntanos, <span>nosotros nos encargamos</span></h3>
-            <form class="contacto__form">
+            <form class="contacto__form" id="contacto__form">
             
                 <div class="contacto__form-container">
                     <label for="contacto__nombre" class="contacto__label">Nombre</label>
-                    <input type="text" id="contacto__nombre" class="contacto__input" placeholder="Tu nombre" required>
+                    <input name="nombre" type="text" id="contacto__nombre" class="contacto__input" placeholder="Nombre" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__email" class="contacto__label">Email</label>
-                    <input type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
+                    <input name="email" type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__telefono" class="contacto__label">Teléfono</label>
-                    <input type="tel" pattern="[0-9]*"id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
+                    <input name="telefono" type="tel" pattern="[0-9]*"id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__empresa" class="contacto__label">Empresa</label>
-                    <input type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
+                    <input name="empresa" type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
                 </div>
                
                 <div class="contacto__form-container">
                     <label for="contacto__mensaje" class="contacto__label">Mensaje</label>
-                    <textarea id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
+                    <textarea name="mensaje" id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
                 </div>
                 <button class="contacto__form-btn" type="submit">Enviar</button>
             </form>
         </div>
-        </section>
+    </section>
     <footer class="footer">
             <div class="footer__marquee">
-                    <div class="marquee__content">
-                        <span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span>
-                    </div>
+                <div class="marquee__content">
+                    <span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span><span>CODDIT</span>
                 </div>
-            <div class="footer__content">
-                <div class="footer__enlaces">
+            </div>
+            <div class="footer__enlaces">
                     <a href=""><img class="ig__logo" src="assets/images/instagram.svg" alt="Instagram logo"></a>
                     <a href=""><img class="tw__logo" src="assets/images/twitter.svg" alt="Twitter logo"></a>
                 </div>
+            <div class="footer__content">
                 <div class="footer__contacto">
                     <h3>Contacto</h3>
-                    <p class="footer__email">coddit@gmail.com</p>
-                    <p class="footer__telefono">+34 622 01 79 38 - Javier</p>
-                    <p class="footer__telefono">+34 653 81 64 54 - Pedro</p>
+                    <a href="mailto:coddit@gmail.com" class="footer__email">coddit@gmail.com</a>
+                    <a href="tel:+34622017938" aria-label="Llamar al 622 01 79 38" class="footer__telefono">+34 622 01 79 38 - Javier</a>
+                    <a href="tel:+34653816454" aria-label="Llamar al 653 81 64 54" class="footer__telefono">+34 653 81 64 54 - Pedro</a>
                 </div>
                 <div class="footer__legal">
                     <h3>Legal</h3>
-                    <a>Privacidad</a>
-                    <a>Términos de uso</a>
-                    <a>Big Black Cocks</a>
+                    <a href="privacidad.html">Política de privacidad</a>
+                    <a href="avisolegal.html">Aviso legal</a>
+                    <a href="terminos.html">Términos y condiciones</a>
+                    <!-- <a href="cookies.html">Política de Cookies</a> -->
                 </div>
                 <a href="#" class="footer__flecha"><svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="white"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V402.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></a>
                 <div class="footer__texto">“Coddit va a transformar tu negocio hacia el camino donde está migrando la sociedad, la digitalización.”</div>
             </div>
-            <div class="just-decoration"></div>
             <div class="footer__bycoddit">
-                <p>Website made by <a href="" class="coddit__link">Coddit</a></p>
+                <p>Website made by <a href="" class="coddit__link">Coddit</a></p><!-- Podemos meterle que cuando pulsase se hiciese alguna animación guapa -->
             </div>
         </footer>
     </body>
