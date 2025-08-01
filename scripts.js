@@ -212,10 +212,11 @@ function closeModal() {
 circulos.forEach(circulo => {
   circulo.addEventListener('click', () => {
     circulo.classList.toggle('circulo-focus');
-    document.body.classList.add("no-scroll");
+    document.body.classList.toggle("no-scroll");
     const modal = document.querySelector('.modal');
     modal.style.display = circulo.classList.contains('circulo-focus') ? 'flex' : 'none';
     servicios.classList.toggle('servicios-padding');
+    circulo.classList.remove('circulo-hover');
   })
   circulo.addEventListener('mouseenter', () => {
     if (circulo.classList.contains('circulo-focus') == false) {

@@ -3,10 +3,18 @@ require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const path = require('path');
 const cors = require('cors'); // útil si frontend y backend están en dominios distintos
 
 const app = express();
-const port = process.env.port || 3001;
+const port = process.env.PORT || 3001;
+
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '7d' 
+}));
+
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
