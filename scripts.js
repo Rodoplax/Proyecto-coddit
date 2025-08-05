@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       interval = setInterval(() => {
         currentIndex = (currentIndex + 1) % totalSections;
         goToSection(currentIndex);
-      }, 5000);
+      }, 9000);
     }
 
     function resetInterval() {
@@ -201,7 +201,6 @@ circulos.forEach(circulo => {
     modalTitulo.textContent = titulo || 'Sin título';
     modalTexto.textContent = desc || 'Sin descripción';
     modal.style.display = 'flex';
-    
   });
 });
 
@@ -209,7 +208,7 @@ function closeModal() {
   modal.style.display = 'none';
 }
 
-circulos.forEach(circulo => {
+circulos.forEach(circulo => { /* Arreglar que cuando se cierra dandole al circulo se ven los otros */
   circulo.addEventListener('click', () => {
     circulo.classList.toggle('circulo-focus');
     document.body.classList.toggle("no-scroll");
@@ -233,7 +232,6 @@ circulos.forEach(circulo => {
 const closeBtn = document.querySelector('.close-btn');
 closeBtn.addEventListener('click', () => {
   circulos.forEach(circulo => {
-    
     if (circulo.classList.contains('circulo-focus') == false) {
       circulo.style.display = 'None';
     }

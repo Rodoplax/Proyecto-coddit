@@ -1183,8 +1183,7 @@ footer{
     flex-direction: column;
 }
 #contacto:target a{
-    animation: shake 1s ease;
-    color: 
+    animation: target 3s ease;
 }
 .footer__contacto{
     display: flex;
@@ -1260,6 +1259,7 @@ footer{
     margin: unset;
     width: clamp(2rem, 2.5vw, 3rem);
 }
+
 @media ( width < 768px){
     .footer__legal{
         gap: 10px;
@@ -1284,7 +1284,14 @@ footer{
     75% { transform: rotate(10deg); }
     100% { transform: rotate(0deg); }
 }
-
+@keyframes target {
+    0% {
+        color: var(--color-accent)
+    }
+    100% {
+        color: var(--color-secundario);
+    }
+}
 /* ---------------------------/servicios------------------------------- */
 
 .servicios{
@@ -1344,7 +1351,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 140px;
     width: 100%;
     padding: 60px 0;
 }
@@ -1860,9 +1867,9 @@ footer{
 }
 
 
-/* Aviso Legal */
+/* Aviso Legal y Cookies*/
 
-.aviso-legal{
+.aviso-legal, .cookies{
     width: 100vw;
     max-width: 1200px;
     margin: auto;
@@ -1871,14 +1878,18 @@ footer{
     color: var(--texto);
     margin-top: 150px;
 }
-.aviso-legal h1{
+.aviso-legal h1, .cookies h1{
     font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 50px;
     margin-left: 80px;
     color: var(--texto);
 }
-.aviso-legal section{
+.cookies > p {
+    margin-bottom: 50px;
+    padding: 0 80px;
+}
+.aviso-legal section, .cookies section{
     padding: 50px 50px 50px 80px;
     max-width: 90%;
     margin: auto;
@@ -1886,36 +1897,40 @@ footer{
     filter: brightness(1.4);
 }
 
-.aviso-legal section h2{
+.aviso-legal section h2, .cookies section h2{
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--texto);
 }
-
-.aviso-legal section p{
+.cookies h3 {
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+}
+.aviso-legal section p, .cookies section p{
     font-size: clamp(1.15rem, 1.75vw, 1.5rem);
     margin-bottom: 10px;
-    color: var(--texto);
+    color: #fffa;
     line-height: 1.2;
 }
 
-.aviso-legal section ul{
+.aviso-legal section ul, .cookies section ul{
     padding-left: 20px;
     margin-bottom: 20px;
 }
-.aviso-legal section li{
+.aviso-legal section li, .cookies section li{
     margin-bottom: 10px;
     list-style-type: disc;
 }
 
-
-
-
-
-
-
-
+.btn-configurar-cookies{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    margin: 20px 20px;
+    border: none;
+    color: var(--color-accent);
+    cursor: pointer;
+}
 
 
 
