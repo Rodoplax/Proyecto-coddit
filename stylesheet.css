@@ -478,19 +478,7 @@ header {
     z-index: 1;
 }
     
-@keyframes animacion__cubo {
-    0% {
-        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
-    }
 
-    50% {
-    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
-    }
-
-    100% {
-    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
-    }
-}
 
 @media(width < 768px) {
 
@@ -606,7 +594,6 @@ header {
     padding: min(10%, 60px);
     position: relative;
     box-shadow: 15px 30px 0px #010e1aa5;
-    
 }
 
 .nosotros__card h2 {
@@ -1248,6 +1235,13 @@ footer{
     font-family: "Nova Flat", sans-serif;
     color: var(--texto);
     text-decoration: underline;
+    cursor: pointer;
+    transition: transform 1s ease;
+}
+.coddit__link:hover{
+    display: inline-block;
+    animation: shake 1s ease;
+    color: var()
 }
 .footer__flecha{
     transform: rotate(180deg);
@@ -1269,29 +1263,9 @@ footer{
     }
     
 }
-@keyframes scroll {
-    0% {
-    transform: translateX(0%);
-    }
-    100% {
-    transform: translateX(-50%);
-    }
-}
-@keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); }
-    50% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
-}
-@keyframes target {
-    0% {
-        color: var(--color-accent)
-    }
-    100% {
-        color: var(--color-secundario);
-    }
-}
+
+
+
 /* ---------------------------/servicios------------------------------- */
 
 .servicios{
@@ -1472,14 +1446,7 @@ footer{
     color: white;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-} 
+
 
 /* ---------------------------/contacto------------------------------- */
 
@@ -1605,7 +1572,7 @@ footer{
     font-family: "Nunito", sans-serif;
 }
 
-.contacto__form-container:last-of-type{
+.contacto__form-container:nth-child(5) {
     grid-column: 1 / 3;
     margin-top: 0;
 }
@@ -1627,6 +1594,31 @@ footer{
 .contacto__form-btn:hover {
     opacity: 1;
     transform: scale(.95);
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup__contenido {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90%;
+}
+
+.oculto {
+    display: none;
 }
 
 
@@ -1869,7 +1861,7 @@ footer{
 
 /* Aviso Legal y Cookies*/
 
-.aviso-legal, .cookies{
+.aviso-legal, .cookies, .privacidad{
     width: 100vw;
     max-width: 1200px;
     margin: auto;
@@ -1878,18 +1870,18 @@ footer{
     color: var(--texto);
     margin-top: 150px;
 }
-.aviso-legal h1, .cookies h1{
+.aviso-legal h1, .cookies h1, .privacidad h1{
     font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 50px;
     margin-left: 80px;
     color: var(--texto);
 }
-.cookies > p {
+.cookies > p, .privacidad > p {
     margin-bottom: 50px;
     padding: 0 80px;
 }
-.aviso-legal section, .cookies section{
+.aviso-legal section, .cookies section, .privacidad section{
     padding: 50px 50px 50px 80px;
     max-width: 90%;
     margin: auto;
@@ -1897,7 +1889,7 @@ footer{
     filter: brightness(1.4);
 }
 
-.aviso-legal section h2, .cookies section h2{
+.aviso-legal section h2, .cookies section h2, .privacidad section h2{
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     font-weight: 700;
     margin-bottom: 20px;
@@ -1907,18 +1899,18 @@ footer{
     font-weight: 400;
     font-size: clamp(1.3rem, 2.5vw, 2rem);
 }
-.aviso-legal section p, .cookies section p{
+.aviso-legal section p, .cookies section p, .privacidad section p{
     font-size: clamp(1.15rem, 1.75vw, 1.5rem);
     margin-bottom: 10px;
     color: #fffa;
     line-height: 1.2;
 }
 
-.aviso-legal section ul, .cookies section ul{
+.aviso-legal section ul, .cookies section ul, .privacidad section ul{
     padding-left: 20px;
     margin-bottom: 20px;
 }
-.aviso-legal section li, .cookies section li{
+.aviso-legal section li, .cookies section li, .privacidad section li{
     margin-bottom: 10px;
     list-style-type: disc;
 }
@@ -1932,15 +1924,55 @@ footer{
     cursor: pointer;
 }
 
+/* Animaciones */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} 
+
+@keyframes animacion__cubo {
+    0% {
+        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    }
+
+    50% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    }
+
+    100% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    }
+}
 
 
-
-
-
-
-
-
-
+@keyframes scroll {
+    0% {
+    transform: translateX(0%);
+    }
+    100% {
+    transform: translateX(-50%);
+    }
+}
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes target {
+    0% {
+        color: var(--color-accent)
+    }
+    100% {
+        color: var(--color-secundario);
+    }
+}
 
 
 
@@ -1949,9 +1981,9 @@ footer{
 
 
 /* 
+
     Lista de tareas:
     0. Añadir animación a las sección de somos coddit. Al hacer hover que haga un efecto 3d segun la posición del ratón o ponerle otra animación.
-    1. Quitar la barra del overflow en y del nav en el responsive.
     2. Arreglar que cuando se da click en el nav de móvil te lleva a la sección de inicio
     3. Hacer la página accesible, añadir etiquetas aria y roles.
     4. Poner los enlaces de cada botón, flecha y cosas.

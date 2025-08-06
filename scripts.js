@@ -8,7 +8,6 @@ document.querySelectorAll('#nav a').forEach(link => {
     });
 });
 
-
 // Menú hamburguesa en movil //
 
 let menu = document.querySelector(".nav__hamburger");
@@ -272,4 +271,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.getElementById("contacto__form").addEventListener("submit", function(e) {
+  e.preventDefault(); // Evita el envío normal
 
+  const form = e.target;
+  const formData = new FormData(form);
+
+  fetch("formulario.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(texto => {
+    document.getElementById("popup__mensaje").innerText = texto;
+    document.getElementById("popup").classList.remove("oculto");
+    form.reset(); // opcional: limpia el formulario tras enviar
+  })
+  .catch(error => {
+    document.getElementById("popup__mensaje").innerText = "Error al enviar el mensaje.";
+    document.getElementById("popup").classList.remove("oculto");
+  });
+});
+
+function cerrarPopup() {
+  document.getElementById("popup").classList.add("oculto");
+}

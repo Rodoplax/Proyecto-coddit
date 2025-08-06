@@ -55,8 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cabeceras .= "X-Mailer: PHP/" . phpversion();
 
     // Enviar correo
-    file_put_contents("log.txt", $contenido, FILE_APPEND);
-echo "Mensaje guardado en log.txt";
+    if (mail($destinatario, $asunto, $contenido, $cabeceras)) {
+    echo "Mensaje enviado correctamente.";
+} else {
+    echo "Error al enviar el mensaje.";
+}
 
 } else {
     echo "Método no permitido.";

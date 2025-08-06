@@ -3,7 +3,7 @@
     <head>   
         <meta charset="utf-8">
         <link rel="canonical" href="https://www.coddit.com">
-        <title>coddit</title>
+        <title>Contacto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Expandete en la web con coddit. El mejor lugar para crear páginas web. Mejor precio, calidad y profesionalidad aseguradas.">
         <meta name="author" content="coddit">
@@ -16,7 +16,7 @@
         <meta property="og:image" content="">
         <meta property="og:url" content="https://coddit.es">
         <meta property="og:site_name" content="coddit">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="assets/images/favicon2.svg">
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.coddit.com/">
         <meta property="twitter:title" content="coddit">
@@ -24,8 +24,10 @@
         <meta property="twitter:image" content="">
         <link href="stylesheet.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="scripts.js" charset="utf-8" defer></script>
-        <script src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8" defer></script>
-        <script src="cookies.js" defer></script>
+        <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8" defer></script>
+        <script type="text/javascript" src="cookies.js" defer></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
     </head>
 <body>
     <header id="header">
@@ -47,49 +49,54 @@
         <section class="contacto__fs">
             <div class="contacto__texto__container">
                 <h1 class="contacto__titulo">Impulsemos tu negocio<span class="juntos"> juntos<span></h1>
-                <p class="contacto__texto">¡No te equivocas eligiendonos! 
-    Estaremos en contacto durante todo el tiempo que trabajemos en tu proyecto y nuestro equipo hará que tu web se convierta en realidad tal y como lo habías imaginado.</p>
+                <p class="contacto__texto">¡Trabajamos contigo desde el primer mensaje hasta la entrega final, manteniendo una comunicación clara en cada paso. Tu idea, nuestro compromiso: una web que refleje exactamente lo que imaginabas.<br>¿Listo para empezar? Escríbenos.</p>
             </div>
         
         <div class="contacto">
 
             <h3 class="titulo__form">Cuéntanos, <span>nosotros nos encargamos</span></h3>
-            <form class="contacto__form" id="contacto__form" action="enviar-formulario.php" method="POST">
+            <form class="contacto__form" id="contacto__form" action="formulario.php" method="POST">
 
             
                 <div class="contacto__form-container">
                     <label for="contacto__nombre" class="contacto__label">Nombre</label>
-                    <input name="nombre" type="text" id="contacto__nombre" class="contacto__input" placeholder="Nombre" required>
+                    <input name="nombre" type="text" id="contacto__nombre" class="contacto__input" placeholder="Nombre" autocomplete="name" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__email" class="contacto__label">Email</label>
-                    <input name="email" type="email" id="contacto__email" class="contacto__input" placeholder="Email" required>
+                    <input name="email" type="email" id="contacto__email" class="contacto__input" placeholder="Email" autocomplete="email" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__telefono" class="contacto__label">Teléfono</label>
-                    <input name="telefono" type="tel" pattern="[0-9]*"id="contacto__telefono" class="contacto__input" placeholder="Teléfono" required>
+                    <input name="telefono" type="tel" pattern="[0-9]*"id="contacto__telefono" class="contacto__input" placeholder="Teléfono" autocomplete="tel" required>
                 </div>
 
                 <div class="contacto__form-container">
                     <label for="contacto__empresa" class="contacto__label">Empresa</label>
                     <input name="empresa" type="text" id="contacto__empresa" class="contacto__input" placeholder="Empresa" required>
                 </div>
-               
+                
                 <div class="contacto__form-container">
                     <label for="contacto__mensaje" class="contacto__label">Mensaje</label>
                     <textarea name="mensaje" id="contacto__mensaje" class="contacto__input" placeholder="Mensaje" required></textarea>
                 </div>
                 <!-- Campo oculto para evitar spam (honeypot) -->
-                <div style="display:none;">
-                  <label for="form_honeypot">Dejar este campo vacío</label>
-                  <input type="text" id="form_honeypot" name="form_honeypot" autocomplete="off">
+                <div style="display:none">
+                    <label for="form_honeypot">Dejar este campo vacío</label>
+                    <input type="text" id="form_honeypot" name="form_honeypot" autocomplete="off">
                 </div>
 
                 <button class="contacto__form-btn" type="submit">Enviar</button>
             </form>
         </div>
+            <div id="popup" class="popup oculto">
+                <div class="popup__contenido">
+                    <p id="popup__mensaje">Mensaje enviado correctamente.</p>
+                    <button onclick="cerrarPopup()">Cerrar</button>
+                </div>
+            </div> 
     </section>
     <footer class="footer">
             <div class="footer__marquee">
@@ -112,12 +119,11 @@
                     <h3>Legal</h3>
                     <a href="privacidad.html">Política de privacidad</a>
                     <a href="avisoLegal.html">Aviso legal</a>
-                    <a href="terminos.html">Términos y condiciones</a>
                     <a href="cookies.html">Cookies</a>
                     <!-- <a href="cookies.html">Política de Cookies</a> -->
                 </div>
                 <a href="#" class="footer__flecha"><svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="white"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V402.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></a>
-                <div class="footer__texto">“Coddit va guiar tu negocio hacia el camino donde está migrando la sociedad, la digitalización.”</div>
+                <div class="footer__texto">Tu negocio, listo para el futuro digital, con Coddit.</div>
             </div>
             <div class="footer__bycoddit">
                 <p>Website made by <a class="coddit__link">Coddit</a></p><!-- Podemos meterle que cuando pulsase se hiciese alguna animación guapa -->
