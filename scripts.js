@@ -234,8 +234,10 @@ closeBtn.addEventListener('click', () => {
     if (circulo.classList.contains('circulo-focus') == false) {
       circulo.style.display = 'None';
     }
+    circulo.style.animation = 'none'; // Detener animación al cerrar
     setTimeout(() => {
       circulo.style.display = 'flex';
+      circulo.style.animation = 'parpadeo 4s infinite ease';
     }, 900)
     circulo.classList.remove('circulo-focus');
     document.body.classList.remove("no-scroll");
@@ -245,31 +247,6 @@ closeBtn.addEventListener('click', () => {
 
 
 //    Formulario de contacto    //
-
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.contacto__form');
-  if (form) {
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const datos = Object.fromEntries(new FormData(this).entries());
-      try {
-        const res = await fetch('http://localhost:3001/contacto', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datos)
-        });
-        const respuesta = await res.json();
-        alert(respuesta.message);
-        this.reset();
-      } catch (err) {
-        alert('Hubo un error al enviar el mensaje.');
-        console.error(err);
-      }
-    });
-  }
-});
-
-
 
 document.getElementById("contacto__form").addEventListener("submit", function(e) {
   e.preventDefault(); // Evita el envío normal
@@ -296,3 +273,13 @@ document.getElementById("contacto__form").addEventListener("submit", function(e)
 function cerrarPopup() {
   document.getElementById("popup").classList.add("oculto");
 }
+
+// Animación botón inicio 
+
+const btnInicio = document.querySelector('.inicio__btn');
+btnInicio.addEventListener('click', () => {
+    btnInicio.classList.add('animacionBtn');
+    setTimeout(() => {
+        btnInicio.classList.remove('animacionBtn');
+    }, 900); // Duración de la animación
+});
