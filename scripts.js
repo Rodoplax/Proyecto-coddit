@@ -245,35 +245,6 @@ closeBtn.addEventListener('click', () => {
   });
 });
 
-
-//    Formulario de contacto    //
-
-document.getElementById("contacto__form").addEventListener("submit", function(e) {
-  e.preventDefault(); // Evita el envío normal
-
-  const form = e.target;
-  const formData = new FormData(form);
-
-  fetch("formulario.php", {
-    method: "POST",
-    body: formData
-  })
-  .then(response => response.text())
-  .then(texto => {
-    document.getElementById("popup__mensaje").innerText = texto;
-    document.getElementById("popup").classList.remove("oculto");
-    form.reset(); // opcional: limpia el formulario tras enviar
-  })
-  .catch(error => {
-    document.getElementById("popup__mensaje").innerText = "Error al enviar el mensaje.";
-    document.getElementById("popup").classList.remove("oculto");
-  });
-});
-
-function cerrarPopup() {
-  document.getElementById("popup").classList.add("oculto");
-}
-
 // Animación botón inicio 
 
 const btnInicio = document.querySelector('.inicio__btn');
@@ -282,4 +253,46 @@ btnInicio.addEventListener('click', () => {
     setTimeout(() => {
         btnInicio.classList.remove('animacionBtn');
     }, 900); // Duración de la animación
+});
+
+
+//    Formulario de contacto    //
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contacto__form");
+    const popup = document.getElementById("popup");
+    const popupMensaje = document.getElementById("popup__mensaje");
+    const cerrarBtn = popup.querySelector("button");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch("formulario.php", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                const texto = await response.text();
+                popupMensaje.textContent = texto || "Mensaje enviado correctamente.";
+                form.reset();
+            } else {
+                popupMensaje.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
+            }
+        } catch (error) {
+            popupMensaje.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
+            console.error(error);
+        }
+
+        popup.classList.remove("oculto");
+    });
+
+    // Cerrar popup
+    const cerrarPopup = () => popup.classList.add("oculto");
+    cerrarBtn.addEventListener("click", cerrarPopup);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrarPopup(); });
+    popup.addEventListener("click", (e) => { if (e.target === popup) cerrarPopup(); });
 });
