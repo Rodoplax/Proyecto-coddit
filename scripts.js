@@ -255,44 +255,40 @@ btnInicio.addEventListener('click', () => {
     }, 900); // Duración de la animación
 });
 
-
 //    Formulario de contacto    //
-
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contacto__form");
     const popup = document.getElementById("popup");
     const popupMensaje = document.getElementById("popup__mensaje");
-    const cerrarBtn = popup.querySelector("button");
+    const cerrarBtn = popup ? popup.querySelector(".close-btn") : null;
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch("formulario.php", {
-                method: "POST",
-                body: formData
-            });
-
-            if (response.ok) {
-                const texto = await response.text();
-                popupMensaje.textContent = texto || "Mensaje enviado correctamente.";
-                form.reset();
-            } else {
+    if (form && popup && popupMensaje) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch("formulario.php", {
+                    method: "POST",
+                    body: formData
+                });
+                if (response.ok) {
+                    const texto = await response.text();
+                    popupMensaje.textContent = texto || "Mensaje enviado correctamente.";
+                    form.reset();
+                } else {
+                    popupMensaje.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
+                }
+            } catch (error) {
                 popupMensaje.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
+                console.error(error);
             }
-        } catch (error) {
-            popupMensaje.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
-            console.error(error);
-        }
-
-        popup.classList.remove("oculto");
-    });
+            popup.classList.remove("oculto");
+        });
+    }
 
     // Cerrar popup
-    const cerrarPopup = () => popup.classList.add("oculto");
-    cerrarBtn.addEventListener("click", cerrarPopup);
+    const cerrarPopup = () => popup && popup.classList.add("oculto");
+    if (cerrarBtn) cerrarBtn.addEventListener("click", cerrarPopup);
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") cerrarPopup(); });
-    popup.addEventListener("click", (e) => { if (e.target === popup) cerrarPopup(); });
+    if (popup) popup.addEventListener("click", (e) => { if (e.target === popup) cerrarPopup(); });
 });

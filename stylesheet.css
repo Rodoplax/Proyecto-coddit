@@ -55,6 +55,37 @@
 
 /* -------------Variables-------------- */
 
+/* -------------Scrollbar-------------- */
+
+/* Tamaño (ancho en vertical / alto en horizontal) */
+::-webkit-scrollbar {
+  width: 12px;    /* scroll vertical */
+  height: 12px;   /* scroll horizontal */
+}
+/* Zona de fondo por donde se mueve la barra */
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+/* El “thumb”, la barrita que arrastras */
+::-webkit-scrollbar-thumb {
+    background: var(--texto);
+    border-radius: 10px;
+    border: none /* efecto de hueco */
+}
+/* El thumb cuando pasas el ratón encima */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--texto);
+}
+/* Esquina donde se juntan scroll vertical y horizontal */
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}
+* {
+  scrollbar-width: thin;              /* valores: auto | thin | none */
+  scrollbar-color: var(--color-secundario) transparent      /* thumb | track */
+}
+
 /* -------------Nav-------------- */
 * {
     box-sizing:border-box;
@@ -1353,11 +1384,19 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 140px;
     width: 100%;
     padding: 60px 0;
 }
-
+.circulos-click{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(1.15rem, 1.75vw, 1.3rem);
+    color: #dedcffc2;
+    width: 70%;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 70px;
+    animation: fadeInUp 4s infinite ease alternate 2s;
+}
 .circulos-container {
     position: relative;
     width: clamp(175px, 35vw, 325px);

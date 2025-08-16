@@ -3,46 +3,46 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://coddit.es/index/</loc>
+        <loc>https://coddit.es/index.html</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/servicios/</loc>
+        <loc>https://coddit.es/servicios.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/contacto/</loc>
+        <loc>https://coddit.es/contacto.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/avisoLegal/</loc>
+        <loc>https://coddit.es/avisoLegal.html</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/cookies/</loc>
+        <loc>https://coddit.es/cookies.html</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/privacidad/</loc>
+        <loc>https://coddit.es/privacidad.html</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://coddit.es/proyectos/</loc>
+        <loc>https://coddit.es/proyectos.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
-</     urlset>
+</urlset>
     
